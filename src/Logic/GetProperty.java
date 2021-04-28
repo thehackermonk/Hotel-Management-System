@@ -18,6 +18,12 @@ import java.util.Properties;
 
 public class GetProperty {
 
+    /**
+     * Get database properties from the properties file
+     * 
+     * @return database name and user name
+     * @throws IOException 
+     */
     public DBCredential getDBProperty() throws IOException {
 
         DBCredential credential = new DBCredential();

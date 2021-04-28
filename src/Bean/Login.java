@@ -9,12 +9,10 @@ package Bean;
  *
  * @author thehackermonk
  */
+public class Login {
 
-
-public class DBCredential {
-
-    String userName;    // user name of the database
-    String database;    // database name
+    String userName;    // user name to login in to the application
+    String password;    // password to login in to the application
 
     public String getUserName() {
         return userName;
@@ -24,12 +22,12 @@ public class DBCredential {
         this.userName = userName;
     }
 
-    public String getDatabase() {
-        return database;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDatabase(String database) {
-        this.database = database;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

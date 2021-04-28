@@ -20,8 +20,8 @@ public class DBConnect {
      * Create database connection
      *
      * @return database connection
-     * @throws SQLException catches any exception by SQL connection creation
-     * @throws IOException catches any exception by property read/write
+     * @throws SQLException
+     * @throws IOException
      */
     public Connection getConnection() throws SQLException, IOException {
 
@@ -34,7 +34,7 @@ public class DBConnect {
 
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = (Connection) DriverManager.getConnection(connectionString, userName, "");
 
         } catch (ClassNotFoundException ex) {
