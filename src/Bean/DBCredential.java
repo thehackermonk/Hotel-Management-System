@@ -13,8 +13,8 @@ package Bean;
 
 public class DBCredential {
 
-    String userName;    // user name of the database
-    String database;    // database name
+    private String userName;    // user name of the database
+    private String database;    // database name
 
     public String getUserName() {
         return userName;

@@ -11,8 +11,8 @@ package Bean;
  */
 public class Login {
 
-    String userName;    // user name to login in to the application
-    String password;    // password to login in to the application
+    private String userName;    // user name to login in to the application
+    private String password;    // password to login in to the application
 
     public String getUserName() {
         return userName;

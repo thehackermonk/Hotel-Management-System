@@ -47,6 +47,10 @@ public class AuthenticationData {
 
             }
 
+            rs.close();
+            stmt.close();
+            conn.close();
+
         } catch (SQLException | IOException ex) {
             Logger.getLogger(AuthenticationData.class.getName()).log(Level.SEVERE, null, ex);
         }
