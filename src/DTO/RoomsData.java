@@ -5,7 +5,7 @@
  */
 package DTO;
 
-import Bean.RoomType;
+import Bean.Room;
 import Logic.DBConnect;
 import java.io.IOException;
 import java.sql.Connection;
@@ -18,20 +18,15 @@ import java.util.ArrayList;
  *
  * @author thehackermonk
  */
-public class RoomTypeData {
+public class RoomsData {
 
-    /**
-     * Get room types and its prices from database
-     *
-     * @return List of room-types and its prices
-     */
-    public ArrayList<RoomType> getAllRoomTypeDetails() {
+    public ArrayList<Room> getAllRoomDetails() {
 
         DBConnect dbConnect = new DBConnect();
 
-        ArrayList<RoomType> roomTypeList = new ArrayList<>();
+        ArrayList<Room> roomList = new ArrayList<>();
 
-        String query = "select * from roomtype";
+        String query = "select * from rooms";
 
         try {
 
@@ -41,11 +36,14 @@ public class RoomTypeData {
 
             while (rs.next()) {
 
-                RoomType roomType = new RoomType();
-                roomType.setType(rs.getString("type"));
-                roomType.setPrice(rs.getFloat("price"));
+                Room room = new Room();
 
-                roomTypeList.add(roomType);
+                room.setRoomNo(rs.getInt("room_no"));
+                room.setType(rs.getString("type"));
+                room.setRoomStatus(rs.getString("status"));
+                room.setUnderMaintenance(rs.getBoolean("maintenance"));
+
+                roomList.add(room);
 
             }
 
@@ -57,22 +55,16 @@ public class RoomTypeData {
             System.out.println(e.getMessage());
         }
 
-        return roomTypeList;
+        return roomList;
 
     }
 
-    /**
-     * Get detail of particular room-type
-     *
-     * @param type Type of room
-     * @return Details of the particular type of room
-     */
-    public RoomType getRoomTypeDetails(String type) {
+    public int getNewRoomNo() {
 
         DBConnect dbConnect = new DBConnect();
-        RoomType roomType = new RoomType();
 
-        String query = "select * from roomtype where type='" + type + "'";
+        int roomNo = 0;
+        String query = "select room_no from rooms order by room_no desc limit 1";
 
         try {
 
@@ -82,8 +74,42 @@ public class RoomTypeData {
 
             while (rs.next()) {
 
-                roomType.setType(rs.getString("type"));
-                roomType.setPrice(rs.getFloat("price"));
+                roomNo = rs.getInt("room_no");
+
+            }
+            roomNo += 1;
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return roomNo;
+
+    }
+
+    public Room getRoomDetails(int roomNo) {
+
+        Room room = new Room();
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "select * from rooms where room_no=" + roomNo;
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                room.setRoomNo(rs.getInt("room_no"));
+                room.setType(rs.getString("type"));
+                room.setRoomStatus(rs.getString("status"));
+                room.setUnderMaintenance(rs.getBoolean("maintenance"));
 
             }
 
@@ -95,21 +121,15 @@ public class RoomTypeData {
             System.out.println(e.getMessage());
         }
 
-        return roomType;
+        return room;
 
     }
 
-    /**
-     * To add new type of room
-     *
-     * @param roomType new type of room and its price
-     * @return true if room-type added successfully and false otherwise
-     */
-    public boolean addRoomType(RoomType roomType) {
+    public boolean addRoom(Room room) {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "INSERT INTO `roomtype` (`type`, `price`) VALUES ('" + roomType.getType() + "', '" + roomType.getPrice() + "')";
+        String query = "INSERT INTO `rooms` (`room_no`, `type`, `status`, `maintenance`) VALUES ('" + room.getRoomNo() + "', '" + room.getType() + "', '" + room.getRoomStatus() + "', " + room.isUnderMaintenance() + ")";
 
         try {
 
@@ -124,25 +144,21 @@ public class RoomTypeData {
             conn.close();
 
         } catch (IOException | SQLException e) {
+
             System.out.println(e.getMessage());
+
         }
 
         return false;
 
     }
 
-    /**
-     * Update details of particular room-type
-     *
-     * @param type Type of room
-     * @param roomType updated values for room-type and price
-     * @return true if updation was successful and false otherwise
-     */
-    public boolean updateRoomType(String type, RoomType roomType) {
+    public boolean modifyRoomType(Room room, int roomNo) {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "UPDATE `roomtype` SET `type` = '" + roomType.getType() + "', `price` = '" + roomType.getPrice() + "' WHERE `roomtype`.`type` = '" + type + "'";
+        String query = "UPDATE `rooms` SET `type` = '" + room.getType() + "' WHERE `rooms`.`room_no` = " + roomNo;
+        //System.out.println(query);
 
         try {
 
@@ -150,31 +166,26 @@ public class RoomTypeData {
             Statement stmt = conn.createStatement();
 
             if (stmt.executeUpdate(query) == 1) {
+
                 return true;
+
             }
 
-            stmt.close();
-            conn.close();
-
         } catch (IOException | SQLException e) {
+
             System.out.println(e.getMessage());
+
         }
 
         return false;
 
     }
 
-    /**
-     * Remove particular type of room
-     *
-     * @param type Type of room which needs to be deleted
-     * @return true if deletion was successful and false otherwise
-     */
-    public boolean removeRoomType(String type) {
+    public boolean removeRoom(int roomNo) {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "DELETE FROM `roomtype` WHERE `roomtype`.`type` = '" + type + "'";
+        String query = "DELETE FROM `rooms` WHERE `rooms`.`room_no` = " + roomNo;
 
         try {
 
@@ -182,14 +193,15 @@ public class RoomTypeData {
             Statement stmt = conn.createStatement();
 
             if (stmt.executeUpdate(query) == 1) {
+
                 return true;
+
             }
 
-            stmt.close();
-            conn.close();
-
         } catch (IOException | SQLException e) {
+
             System.out.println(e.getMessage());
+
         }
 
         return false;

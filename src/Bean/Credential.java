@@ -9,7 +9,7 @@ package Bean;
  *
  * @author thehackermonk
  */
-public class Login {
+public class Credential {
 
     private String userName;    // user name to login in to the application
     private String password;    // password to login in to the application

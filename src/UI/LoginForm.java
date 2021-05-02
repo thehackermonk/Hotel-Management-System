@@ -5,7 +5,7 @@
  */
 package UI;
 
-import Bean.Login;
+import Bean.Credential;
 import Logic.Authentication;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
@@ -41,7 +41,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     private void checkLogin() {
 
-        Login login = new Login();
+        Credential login = new Credential();
         Authentication authenticate = new Authentication();
 
         login.setUserName(userIDTextField.getText());

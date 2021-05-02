@@ -5,7 +5,7 @@
  */
 package DTO;
 
-import Bean.Login;
+import Bean.Credential;
 import Logic.DBConnect;
 import java.io.IOException;
 import java.sql.Connection;
@@ -27,17 +27,17 @@ public class AuthenticationData {
      * @param userID entered by the user
      * @return userID and password fetched from the database
      */
-    public Login getPassword(String userID) {
+    public Credential getPassword(String userID) {
 
         DBConnect dbConnect = new DBConnect();
-        Login login = new Login();
+        Credential login = new Credential();
 
         String query = "SELECT * FROM `auth` WHERE `login`='" + userID + "'";
 
         try {
 
             Connection conn = dbConnect.getConnection();
-            Statement stmt = (Statement) conn.createStatement();
+            Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {

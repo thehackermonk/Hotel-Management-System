@@ -341,6 +341,7 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
+        roomTypeTable.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         roomTypeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},

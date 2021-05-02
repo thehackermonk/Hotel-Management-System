@@ -5,7 +5,7 @@
  */
 package Logic;
 
-import Bean.Login;
+import Bean.Credential;
 import DTO.AuthenticationData;
 import java.security.NoSuchAlgorithmException;
 
@@ -22,11 +22,11 @@ public class Authentication {
      * @return true if authentication is successful, false otherwise
      * @throws NoSuchAlgorithmException
      */
-    public boolean checkLogin(Login login) throws NoSuchAlgorithmException {
+    public boolean checkLogin(Credential login) throws NoSuchAlgorithmException {
 
         AuthenticationData authenticationData = new AuthenticationData();
         Hashing hashing = new Hashing();
-        Login dbLogin = authenticationData.getPassword(login.getUserName());
+        Credential dbLogin = authenticationData.getPassword(login.getUserName());
 
         return dbLogin.getPassword().equals(hashing.encode(login.getPassword()));
 
