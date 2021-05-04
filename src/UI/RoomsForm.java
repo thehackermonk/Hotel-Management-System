@@ -27,101 +27,122 @@ public class RoomsForm extends javax.swing.JFrame {
     public RoomsForm() {
         initComponents();
     }
-    
+
+    /**
+     *
+     * To display all the rooms details in the table
+     *
+     */
     public void refreshRoomTable() {
-        
+
         RoomsData roomsData = new RoomsData();
-        
+
         DefaultTableModel roomTableModel = (DefaultTableModel) roomTable.getModel();
-        
+
         while (roomTableModel.getRowCount() > 0) {
-            
+
             roomTableModel.removeRow(0);
-            
+
         }
-        
+
         ArrayList<Room> roomList = roomsData.getAllRoomDetails();
         Iterator<Room> roomListIterator = roomList.iterator();
-        
+
         while (roomListIterator.hasNext()) {
-            
+
             Room room = roomListIterator.next();
-            
+
             int roomNo = room.getRoomNo();
             String type = room.getType();
             String status = room.getRoomStatus();
             String maintenance;
-            
+
             if (room.isUnderMaintenance()) {
                 maintenance = "Yes";
             } else {
                 maintenance = "No";
             }
-            
+
             roomTableModel.addRow(new Object[]{roomNo, type, status, maintenance});
-            
+
         }
-        
+
     }
-    
+
+    /**
+     * Refresh room no combo box
+     *
+     * @param comboBoxModel pass combo box
+     */
     public void refreshRoomNoComboBox(DefaultComboBoxModel comboBoxModel) {
-        
+
         RoomsData roomData = new RoomsData();
-        
+
         ArrayList<Room> roomList = roomData.getAllRoomDetails();
         Iterator<Room> roomListIterator = roomList.iterator();
-        
+
         comboBoxModel.removeAllElements();
-        
+
         while (roomListIterator.hasNext()) {
-            
+
             Room room = roomListIterator.next();
             comboBoxModel.addElement(room.getRoomNo());
-            
+
         }
-        
+
     }
-    
+
+    /**
+     * Refresh room type combo box
+     *
+     * @param comboBoxModel pass combo box
+     */
     public void refreshRoomTypeComboBox(DefaultComboBoxModel comboBoxModel) {
-        
+
         RoomTypeData roomTypeData = new RoomTypeData();
-        
+
         ArrayList<RoomType> roomTypeList = roomTypeData.getAllRoomTypeDetails();
         Iterator<RoomType> roomTypeListIterator = roomTypeList.iterator();
-        
+
         comboBoxModel.removeAllElements();
-        
+
         while (roomTypeListIterator.hasNext()) {
-            
+
             RoomType roomType = roomTypeListIterator.next();
-            
+
             comboBoxModel.addElement(roomType.getType());
-            
+
         }
-        
+
     }
-    
+
+    /**
+     * To check if it is a valid room no Room no should not be present already
+     *
+     * @param roomNo
+     * @return true if room no is not present already and false otherwise
+     */
     public boolean isValidRoomNo(int roomNo) {
-        
+
         RoomsData roomsData = new RoomsData();
-        
+
         Boolean isValid = true;
-        
+
         ArrayList<Room> roomList = roomsData.getAllRoomDetails();
         Iterator<Room> roomListIterator = roomList.iterator();
-        
+
         while (roomListIterator.hasNext()) {
-            
+
             Room room = roomListIterator.next();
-            
+
             if (room.getRoomNo() == roomNo) {
                 isValid = false;
             }
-            
+
         }
-        
+
         return isValid;
-        
+
     }
 
     /**
@@ -407,138 +428,138 @@ public class RoomsForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        
+
         refreshRoomTable();
 
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        
+
         RoomsData roomsData = new RoomsData();
-        
+
         DefaultComboBoxModel roomTypeComboModel = (DefaultComboBoxModel) addRoomTypeCombo.getModel();
-        
+
         int newRoomNo = roomsData.getNewRoomNo();
-        
+
         JOptionPane.showMessageDialog(null, newRoomNo + " is the suggested room no.");
-        
+
         addRoomNoTextField.setText("" + newRoomNo);
         refreshRoomTypeComboBox(roomTypeComboModel);
-        
+
         addRoomDialog.setSize(800, 500);
         addRoomDialog.show();
 
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void addRoomAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRoomAddButtonActionPerformed
-        
+
         Room room = new Room();
         RoomsData roomsData = new RoomsData();
-        
+
         room.setRoomNo(Integer.parseInt(addRoomNoTextField.getText()));
         room.setType(addRoomTypeCombo.getSelectedItem().toString());
         room.setRoomStatus("Vacant");
         room.setUnderMaintenance(false);
-        
+
         if (roomsData.addRoom(room)) {
-            
+
             JOptionPane.showMessageDialog(null, "Room " + room.getRoomNo() + " added successfully!");
             addRoomDialog.setVisible(false);
-            
+
         }
 
     }//GEN-LAST:event_addRoomAddButtonActionPerformed
 
     private void addRoomNoTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addRoomNoTextFieldKeyReleased
-        
+
         int roomNo = Integer.parseInt(addRoomNoTextField.getText());
         if (isValidRoomNo(roomNo)) {
-            
+
             addRoomNoTextField.setToolTipText("");
             addRoomAddButton.setEnabled(true);
-            
+
         } else {
-            
+
             addRoomNoTextField.setToolTipText("Room No " + roomNo + " already exist!");
             addRoomAddButton.setEnabled(false);
-            
+
         }
 
     }//GEN-LAST:event_addRoomNoTextFieldKeyReleased
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        
+
         DefaultComboBoxModel roomNoComboBoxModel = (DefaultComboBoxModel) editRoomNoCombo.getModel();
         DefaultComboBoxModel roomTypeComboBoxModel = (DefaultComboBoxModel) editRoomTypeCombo.getModel();
-        
+
         refreshRoomNoComboBox(roomNoComboBoxModel);
         refreshRoomTypeComboBox(roomTypeComboBoxModel);
-        
+
         editRoomDialog.setSize(800, 500);
         editRoomDialog.show();
 
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void editRoomNoComboFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_editRoomNoComboFocusLost
-        
+
         Room room;
         RoomsData roomsData = new RoomsData();
-        
+
         int roomNo = Integer.parseInt(editRoomNoCombo.getSelectedItem().toString());
         room = roomsData.getRoomDetails(roomNo);
-        
+
         editRoomTypeCombo.setSelectedItem(room.getType());
 
     }//GEN-LAST:event_editRoomNoComboFocusLost
 
     private void editRoomSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRoomSaveButtonActionPerformed
-        
+
         RoomsData roomsData = new RoomsData();
         Room room = new Room();
-        
+
         int roomNo = Integer.parseInt(editRoomNoCombo.getSelectedItem().toString());
         room.setType(editRoomTypeCombo.getSelectedItem().toString());
-        
+
         if (roomsData.modifyRoomType(room, roomNo)) {
-            
+
             JOptionPane.showMessageDialog(null, "Modified room successfully!");
             editRoomDialog.setVisible(false);
-            
+
         }
 
     }//GEN-LAST:event_editRoomSaveButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        
+
         DefaultComboBoxModel roomNoComboBoxModel = (DefaultComboBoxModel) removeRoomNoCombo.getModel();
-        
+
         refreshRoomNoComboBox(roomNoComboBoxModel);
-        
+
         removeRoomDialog.setSize(800, 500);
         removeRoomDialog.show();
 
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void removeRoomNoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRoomNoButtonActionPerformed
-        
+
         RoomsData roomsData = new RoomsData();
-        
+
         int roomNo, confirm;
-        
+
         roomNo = Integer.parseInt(removeRoomNoCombo.getSelectedItem().toString());
         confirm = JOptionPane.showConfirmDialog(null, "Are you sure to delete " + roomNo);
-        
+
         if (confirm == 0) {
-            
+
             if (roomsData.removeRoom(roomNo)) {
-                
+
                 JOptionPane.showMessageDialog(null, roomNo + " removed successfully!");
                 removeRoomDialog.setVisible(false);
-                
+
             }
-            
+
         }
-        
+
     }//GEN-LAST:event_removeRoomNoButtonActionPerformed
 
     /**
