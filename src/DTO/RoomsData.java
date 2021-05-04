@@ -5,6 +5,7 @@
  */
 package DTO;
 
+import Bean.FrontOffice;
 import Bean.Room;
 import Logic.DBConnect;
 import java.io.IOException;
@@ -109,8 +110,8 @@ public class RoomsData {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public ArrayList<Room> getRoomUnderMaintenance() {
 
@@ -223,6 +224,48 @@ public class RoomsData {
     }
 
     /**
+     * Get rooms of a particular type which are vacant and are not under
+     * maintenance
+     *
+     * @param roomType Type of room
+     * @return List of rooms
+     */
+    public ArrayList<Room> getRoomNoOfType(String roomType) {
+
+        DBConnect dbConnect = new DBConnect();
+
+        ArrayList<Room> roomList = new ArrayList<>();
+
+        String query = "select * from `rooms` where `type`='" + roomType + "' and `status`='Vacant' and `maintenance`=0";
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                Room room = new Room();
+
+                room.setRoomNo(rs.getInt("room_no"));
+                room.setType(rs.getString("type"));
+                room.setRoomStatus(rs.getString("status"));
+                room.setUnderMaintenance(rs.getBoolean("maintenance"));
+
+                roomList.add(room);
+
+            }
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return roomList;
+
+    }
+
+    /**
      * To add new room
      *
      * @param room
@@ -318,6 +361,38 @@ public class RoomsData {
 
             System.out.println(e.getMessage());
 
+        }
+
+        return false;
+
+    }
+
+    /**
+     * Mark a room as occupied
+     *
+     * @param frontOffice Get room no
+     * @return true if room has been set to Occupied and false otherwise
+     */
+    public boolean occupyRoom(FrontOffice frontOffice) {
+
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "UPDATE `rooms` SET `status` = 'Occupied' WHERE `rooms`.`room_no` = " + frontOffice.getRoomNo();
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+
+            if (stmt.executeUpdate(query) == 1) {
+                return true;
+            }
+
+            stmt.close();
+            conn.close();
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
         }
 
         return false;

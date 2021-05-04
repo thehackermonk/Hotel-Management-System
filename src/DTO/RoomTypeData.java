@@ -44,6 +44,7 @@ public class RoomTypeData {
                 RoomType roomType = new RoomType();
                 roomType.setType(rs.getString("type"));
                 roomType.setPrice(rs.getFloat("price"));
+                roomType.setCapacity(rs.getInt("capacity"));
 
                 roomTypeList.add(roomType);
 
@@ -84,6 +85,7 @@ public class RoomTypeData {
 
                 roomType.setType(rs.getString("type"));
                 roomType.setPrice(rs.getFloat("price"));
+                roomType.setCapacity(rs.getInt("capacity"));
 
             }
 
@@ -100,6 +102,39 @@ public class RoomTypeData {
     }
 
     /**
+     * Get no of people who can stay in a particular type of room
+     * 
+     * @param roomType Type of room
+     * @return No of people who can stay
+     */
+    public int getRoomCapacity(String roomType) {
+
+        DBConnect dbConnect = new DBConnect();
+        int capacity = 0;
+
+        String query = "select capacity from roomtype where type='" + roomType+"'";
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            if (rs.next()) {
+
+                capacity = rs.getInt("capacity");
+
+            }
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return capacity;
+
+    }
+
+    /**
      * To add new type of room
      *
      * @param roomType new type of room and its price
@@ -109,7 +144,7 @@ public class RoomTypeData {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "INSERT INTO `roomtype` (`type`, `price`) VALUES ('" + roomType.getType() + "', '" + roomType.getPrice() + "')";
+        String query = "INSERT INTO `roomtype` (`type`, `price`,`capacity`) VALUES ('" + roomType.getType() + "', '" + roomType.getPrice() + "', '" + roomType.getCapacity() + "')";
 
         try {
 
@@ -142,7 +177,7 @@ public class RoomTypeData {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "UPDATE `roomtype` SET `type` = '" + roomType.getType() + "', `price` = '" + roomType.getPrice() + "' WHERE `roomtype`.`type` = '" + type + "'";
+        String query = "UPDATE `roomtype` SET `type` = '" + roomType.getType() + "', `price` = '" + roomType.getPrice() + "', `capacity` = " + roomType.getCapacity() + " WHERE `roomtype`.`type` = '" + type + "'";
 
         try {
 

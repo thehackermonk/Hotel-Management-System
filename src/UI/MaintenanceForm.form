@@ -371,7 +371,7 @@
                   <Component id="moveRoomButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="completeMaintenanceButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

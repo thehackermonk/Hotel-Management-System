@@ -13,6 +13,7 @@ public class RoomType {
 
     private String type;    // type of the room
     private Float price;    // price for the particular type of room
+    private int capacity;   // no of people who can stay
 
     public String getType() {
         return type;
@@ -28,6 +29,14 @@ public class RoomType {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
 }
