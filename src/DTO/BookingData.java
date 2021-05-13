@@ -185,6 +185,13 @@ public class BookingData {
 
     }
 
+    /**
+     * Search bookings by name and contact
+     *
+     * @param name
+     * @param contact
+     * @return List of bookings
+     */
     public ArrayList<Booking> searchBookings(String name, String contact) {
 
         DBConnect dbConnect = new DBConnect();
@@ -227,6 +234,12 @@ public class BookingData {
 
     }
 
+    /**
+     * To delete a particular booking
+     *
+     * @param bookingNo
+     * @return true if the deletion was successful and false otherwise
+     */
     public boolean deleteBooking(int bookingNo) {
 
         DBConnect dbConnect = new DBConnect();

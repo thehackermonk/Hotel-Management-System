@@ -107,6 +107,11 @@ public class BookingForm extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Get all booking to the bookings Table
+     *
+     * @param bookingTable
+     */
     public void refreshBookingTable(DefaultTableModel bookingTable) {
 
         BookingData bookingData = new BookingData();
@@ -128,6 +133,13 @@ public class BookingForm extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Get the search results to the bookings table
+     *
+     * @param bookingTable
+     * @param name
+     * @param contact
+     */
     public void searchBookings(DefaultTableModel bookingTable, String name, String contact) {
 
         BookingData bookingData = new BookingData();
@@ -591,25 +603,25 @@ public class BookingForm extends javax.swing.JFrame {
     }//GEN-LAST:event_delContactTextFieldKeyReleased
 
     private void delDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delDeleteButtonActionPerformed
-        
-        BookingData bookingData=new BookingData();
-        
+
+        BookingData bookingData = new BookingData();
+
         String bookingID;
-        int booking,confirm;
-        
+        int booking, confirm;
+
         JOptionPane.showMessageDialog(null, "Enter booking ID like ALaCarte#1");
-        bookingID=JOptionPane.showInputDialog("Enter booking ID");
-        booking=Integer.parseInt(bookingID.substring(9));
+        bookingID = JOptionPane.showInputDialog("Enter booking ID");
+        booking = Integer.parseInt(bookingID.substring(9));
         confirm = JOptionPane.showConfirmDialog(null, "Are you sure to delete " + bookingID);
-        
-        if(confirm==0) {
-            if(bookingData.deleteBooking(booking)) {
-                
-                JOptionPane.showMessageDialog(null, bookingID+" deleted successfully!");
-                
+
+        if (confirm == 0) {
+            if (bookingData.deleteBooking(booking)) {
+
+                JOptionPane.showMessageDialog(null, bookingID + " deleted successfully!");
+
             }
         }
-        
+
     }//GEN-LAST:event_delDeleteButtonActionPerformed
 
     /**
