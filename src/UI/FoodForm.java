@@ -7,8 +7,8 @@ package UI;
 
 import Bean.Food;
 import DTO.FoodData;
+import Logic.Sort;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -95,30 +95,6 @@ public class FoodForm extends javax.swing.JFrame {
             comboBox.addElement(food.getName());
 
         }
-
-    }
-
-    /**
-     * Sort the food names in alphabetical order
-     *
-     * @param comboBoxModel
-     */
-    public void sortComboBox(DefaultComboBoxModel comboBoxModel) {
-
-        ArrayList<String> sortedList = new ArrayList<>();
-        int i;
-
-        for (i = 0; i < comboBoxModel.getSize(); i++) {
-            sortedList.add(comboBoxModel.getElementAt(i).toString());
-        }
-
-        Collections.sort(sortedList);
-
-        comboBoxModel.removeAllElements();
-
-        sortedList.forEach(value -> {
-            comboBoxModel.addElement(value);
-        });
 
     }
 
@@ -599,13 +575,15 @@ public class FoodForm extends javax.swing.JFrame {
 
     private void editFoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editFoodButtonActionPerformed
 
+        Sort sort=new Sort();
+        
         DefaultComboBoxModel nameComboBoxModel = (DefaultComboBoxModel) modifyFoodNameCombo.getModel();
 
         modifyFoodDialog.setSize(800, 600);
         modifyFoodDialog.show();
 
         refreshFoodNameCombo(nameComboBoxModel);
-        sortComboBox(nameComboBoxModel);
+        sort.sortComboBox(nameComboBoxModel);
         clearModifyDialog();
 
     }//GEN-LAST:event_editFoodButtonActionPerformed
@@ -683,13 +661,15 @@ public class FoodForm extends javax.swing.JFrame {
 
     private void removeFoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFoodButtonActionPerformed
 
+        Sort sort=new Sort();
+        
         DefaultComboBoxModel foodNameComboBoxModel = (DefaultComboBoxModel) removeFoodNameComboBox.getModel();
 
         removeFoodDialog.setSize(800, 600);
         removeFoodDialog.show();
 
         refreshFoodNameCombo(foodNameComboBoxModel);
-        sortComboBox(foodNameComboBoxModel);
+        sort.sortComboBox(foodNameComboBoxModel);
 
     }//GEN-LAST:event_removeFoodButtonActionPerformed
 

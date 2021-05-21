@@ -101,6 +101,42 @@ public class FoodData {
     }
 
     /**
+     * Get details of a particular food
+     *
+     * @param NDBNo : Unique identification number of food
+     * @return Details of the food
+     */
+    public Food getFoodDetails(int NDBNo) {
+
+        DBConnect dbConnect = new DBConnect();
+        Food food = new Food();
+
+        String query = "SELECT * FROM `food` where `ndb_no`='" + NDBNo + "'";
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                food.setNdbNo(rs.getInt("ndb_no"));
+                food.setName(rs.getString("name"));
+                food.setDescription(rs.getString("description"));
+                food.setPrice(rs.getDouble("price"));
+
+            }
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return food;
+
+    }
+
+    /**
      * Get the next NDBNo
      *
      * Gets the last NDBNo from the database and adds 1 to it If there are no
@@ -148,7 +184,7 @@ public class FoodData {
     /**
      * To add a new food to the database
      *
-     * @param food
+     * @param food: food details
      * @return true if the insertion was successful and false otherwise
      */
     public boolean addNewFood(Food food) {
@@ -180,7 +216,7 @@ public class FoodData {
     /**
      * Check if a food already exists in the database
      *
-     * @param foodName
+     * @param foodName: name of the food
      * @return true if food already exists and false otherwise
      */
     public boolean checkIfFoodExist(String foodName) {
@@ -251,14 +287,14 @@ public class FoodData {
     /**
      * To remove a particular food from the database
      *
-     * @param name
+     * @param foodName: name of the food
      * @return true if removal was successful and false otherwise
      */
-    public boolean removeFood(String name) {
+    public boolean removeFood(String foodName) {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "DELETE FROM `food` WHERE `food`.`name` = '" + name + "'";
+        String query = "DELETE FROM `food` WHERE `food`.`name` = '" + foodName + "'";
 
         try {
 
