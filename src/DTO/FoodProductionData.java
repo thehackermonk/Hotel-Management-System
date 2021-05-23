@@ -5,10 +5,11 @@
  */
 package DTO;
 
-import Bean.RestaurantFood;
+import Bean.FoodProduction;
 import Logic.DBConnect;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,21 +19,15 @@ import java.util.ArrayList;
  *
  * @author thehackermonk
  */
-public class RestaurantFoodData {
+public class FoodProductionData {
 
-    /**
-     * To get food assigned to specific restaurant
-     *
-     * @param restaurantNo
-     * @return
-     */
-    public ArrayList<RestaurantFood> getAssignedFood(int restaurantNo) {
+    public ArrayList<FoodProduction> getFoodProducedToday(Date date) {
 
         DBConnect dbConnect = new DBConnect();
 
-        ArrayList<RestaurantFood> restaurantFoodList = new ArrayList<>();
+        String query = "SELECT * FROM `todays_food` WHERE `date`='" + date + "'";
 
-        String query = "SELECT * FROM `restaurant_food` WHERE `restaurant_no`=" + restaurantNo;
+        ArrayList<FoodProduction> foodProductionList = new ArrayList<>();
 
         try {
 
@@ -42,12 +37,14 @@ public class RestaurantFoodData {
 
             while (rs.next()) {
 
-                RestaurantFood restaurantFood = new RestaurantFood();
+                FoodProduction foodProduction = new FoodProduction();
 
-                restaurantFood.setNDBNo(rs.getInt("restaurant_no"));
-                restaurantFood.setNDBNo(rs.getInt("food"));
+                foodProduction.setRestaurantNo(rs.getInt("restaurant_no"));
+                foodProduction.setFoodNo(rs.getInt("food"));
+                foodProduction.setProductionDate(rs.getDate("date"));
+                foodProduction.setCount(rs.getInt("quantity"));
 
-                restaurantFoodList.add(restaurantFood);
+                foodProductionList.add(foodProduction);
 
             }
 
@@ -59,22 +56,15 @@ public class RestaurantFoodData {
             System.out.println(e.getMessage());
         }
 
-        return restaurantFoodList;
+        return foodProductionList;
 
     }
-    
-    /**
-     * To assign food to restaurant
-     *
-     * @param restaurantNo: Unique identification number of restaurant
-     * @param foodNo: Unique identification number of food
-     * @return true if insertion was successful and false otherwise
-     */
-    public boolean assignFood(int restaurantNo, int foodNo) {
+
+    public boolean clearTodaysFood(FoodProduction foodProduction) {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "INSERT INTO `restaurant_food` (`restaurant_no`, `food`) VALUES (" + restaurantNo + ", '" + foodNo + "')";
+        String query = "DELETE FROM `todays_food` WHERE `restaurant_no`=" + foodProduction.getRestaurantNo() + " and `food`=" + foodProduction.getFoodNo();
 
         try {
 
@@ -96,17 +86,11 @@ public class RestaurantFoodData {
 
     }
 
-    /**
-     * To un-assign food for particular restaurant
-     *
-     * @param restaurantNo: unique identification number of restaurant
-     * @return true if removal was successful and false otherwise
-     */
-    public boolean removeFood(int restaurantNo) {
+    public boolean addTodaysFood(FoodProduction foodProduction) {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "DELETE FROM `restaurant_food` WHERE `restaurant_no`=" + restaurantNo;
+        String query = "INSERT INTO `todays_food` (`restaurant_no`, `food`, `date`, `quantity`) VALUES ('" + foodProduction.getRestaurantNo() + "', '" + foodProduction.getFoodNo() + "', '" + foodProduction.getProductionDate() + "', '" + foodProduction.getCount() + "')";
 
         try {
 

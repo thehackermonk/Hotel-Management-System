@@ -481,6 +481,7 @@ public class RestaurantForm extends javax.swing.JFrame {
 
         clearAddDialog();
         refreshRestaurantTypeComboBox(comboBoxModel);
+        addNameTextField.requestFocus();
 
     }//GEN-LAST:event_addButtonActionPerformed
 

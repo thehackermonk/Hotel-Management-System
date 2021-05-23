@@ -31,159 +31,161 @@ public class AssignFoodForm extends javax.swing.JFrame {
     public AssignFoodForm() {
         initComponents();
     }
-    
+
     /**
      * Clear contents of both the tables
      */
     public void clearTables() {
-        
+
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
         DefaultTableModel selectedFoodTableModel = (DefaultTableModel) selectedFoodTable.getModel();
-        
+
         while (foodTableModel.getRowCount() > 0) {
             foodTableModel.removeRow(0);
         }
-        
+
         while (selectedFoodTableModel.getRowCount() > 0) {
             selectedFoodTableModel.removeRow(0);
         }
-        
+
     }
-    
+
     /**
      * Refresh contents of the restaurant name combo box
-     * 
-     * @param comboBox 
+     *
+     * @param comboBox
      */
     public void refreshRestaurantComboBox(DefaultComboBoxModel comboBox) {
-        
+
         RestaurantData restaurantData = new RestaurantData();
-        
+
         ArrayList<Restaurant> restaurantList = restaurantData.getAllRestaurantDetails();
         Iterator<Restaurant> restaurantListIterator = restaurantList.iterator();
-        
+
         comboBox.removeAllElements();
-        
+
         while (restaurantListIterator.hasNext()) {
-            
+
             Restaurant restaurant = restaurantListIterator.next();
             comboBox.addElement(restaurant.getName());
-            
+
         }
-        
+
     }
 
     /**
      * Refresh contents of food table
-     * 
+     *
      * Food table contains name of all the foods that are not selected
-     * 
-     * This function is triggered when there are values in the selected food table
-     * 
+     *
+     * This function is triggered when there are values in the selected food
+     * table
+     *
      * @param tableModel
-     * @param selectedTableModel 
+     * @param selectedTableModel
      */
     public void refreshFoodTable(DefaultTableModel tableModel, DefaultTableModel selectedTableModel) {
-        
+
         FoodData foodData = new FoodData();
-        
+
         ArrayList<Food> foodList;
         ArrayList<String> selectedList = new ArrayList<>();
         Iterator<Food> foodListIterator;
-        
+
         while (tableModel.getRowCount() > 0) {
             tableModel.removeRow(0);
         }
-        
+
         foodList = foodData.getAllFoodDetails();
         foodListIterator = foodList.iterator();
-        
+
         for (int i = 0; i < selectedTableModel.getRowCount(); i++) {
-            
+
             selectedList.add(selectedTableModel.getValueAt(i, 0).toString());
-            
+
         }
-        
+
         while (foodListIterator.hasNext()) {
-            
+
             Food food = foodListIterator.next();
             String foodName = food.getName();
-            
+
             if (!(selectedList.contains(foodName))) {
-                
+
                 tableModel.addRow(new Object[]{foodName});
-                
+
             }
-            
+
         }
-        
+
     }
-    
+
     /**
      * Refresh contents of food table
-     * 
+     *
      * Food table contains name of all the foods that are not selected
-     * 
-     * This function is triggered when there are no values in the selected food table
-     * 
-     * @param tableModel 
+     *
+     * This function is triggered when there are no values in the selected food
+     * table
+     *
+     * @param tableModel
      */
     public void refreshFoodTable(DefaultTableModel tableModel) {
-        
+
         FoodData foodData = new FoodData();
-        
+
         ArrayList<Food> foodList;
         Iterator<Food> foodListIterator;
-        
+
         while (tableModel.getRowCount() > 0) {
             tableModel.removeRow(0);
         }
-        
+
         foodList = foodData.getAllFoodDetails();
         foodListIterator = foodList.iterator();
-        
+
         while (foodListIterator.hasNext()) {
-            
+
             Food food = foodListIterator.next();
             tableModel.addRow(new Object[]{food.getName()});
-            
+
         }
-        
+
     }
-    
+
     /**
      * Refresh contents of selected food table
-     * 
+     *
      * @param tableModel
      * @param restaurantNo : Unique identification number of restaurant
      */
     public void refreshSelectedFoodTable(DefaultTableModel tableModel, int restaurantNo) {
-        
+
         FoodData foodData = new FoodData();
         RestaurantFoodData restaurantFoodData = new RestaurantFoodData();
-        
+
         ArrayList<RestaurantFood> restaurantFoodList;
         Iterator<RestaurantFood> restaurantFoodListIterator;
-        
+
         while (tableModel.getRowCount() > 0) {
             tableModel.removeRow(0);
         }
-        
+
         restaurantFoodList = restaurantFoodData.getAssignedFood(restaurantNo);
         restaurantFoodListIterator = restaurantFoodList.iterator();
-        
+
         while (restaurantFoodListIterator.hasNext()) {
-            
+
             Food food;
             RestaurantFood restaurantFood;
-            
+
             restaurantFood = restaurantFoodListIterator.next();
             food = foodData.getFoodDetails(restaurantFood.getNDBNo());
-            
+
             tableModel.addRow(new Object[]{food.getName()});
-            
+
         }
-        
+
     }
 
     /**
@@ -378,113 +380,110 @@ public class AssignFoodForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        
+
         Sort sort = new Sort();
-        
+
         DefaultComboBoxModel restaurantComboBoxModel = (DefaultComboBoxModel) restaurantComboBox.getModel();
-        
+
         refreshRestaurantComboBox(restaurantComboBoxModel); // refresh contents of the restaurant name combo box
         sort.sortComboBox(restaurantComboBoxModel);         // sort the contents of the restaurant name combo box alphabetically
-        
+
         clearTables();      // clear contents of both the tables
 
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void assignFoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignFoodButtonActionPerformed
 
-        RestaurantFoodLogic restaurantFoodLogic=new RestaurantFoodLogic();
-        
+        RestaurantFoodLogic restaurantFoodLogic = new RestaurantFoodLogic();
+
         String restaurantName;
-        
-        DefaultTableModel selectedTableModel=(DefaultTableModel) selectedFoodTable.getModel();
-        
-        ArrayList<String> foodList=new ArrayList<>();
-        
-        restaurantName=restaurantComboBox.getSelectedItem().toString();
-        
-        for(int i=0;i<selectedTableModel.getRowCount();i++) {
-            
+
+        DefaultTableModel selectedTableModel = (DefaultTableModel) selectedFoodTable.getModel();
+
+        ArrayList<String> foodList = new ArrayList<>();
+
+        restaurantName = restaurantComboBox.getSelectedItem().toString();
+
+        for (int i = 0; i < selectedTableModel.getRowCount(); i++) {
+
             foodList.add(selectedTableModel.getValueAt(i, 0).toString());   // To get all the selected foods
-            
+
         }
-        
-        if(restaurantFoodLogic.assignFood(restaurantName, foodList)) {
-            
+
+        if (restaurantFoodLogic.assignFood(restaurantName, foodList)) {
+
             JOptionPane.showMessageDialog(null, "Food assigned successfully!");
-            
+
         }
-        
+
     }//GEN-LAST:event_assignFoodButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
 
         // Resets both the tables to the initial state
-        
         Restaurant restaurant;
         RestaurantData restaurantData = new RestaurantData();
-        
+
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
         DefaultTableModel selectedFoodTableModel = (DefaultTableModel) selectedFoodTable.getModel();
-        
+
         String restaurantName;
-        
+
         restaurantName = restaurantComboBox.getSelectedItem().toString();
         restaurant = restaurantData.getRestaurantDetails(restaurantName);
-        
+
         refreshSelectedFoodTable(selectedFoodTableModel, restaurant.getRestaurantNo());
-        
+
         if (selectedFoodTable.getRowCount() > 0) {
-            
+
             refreshFoodTable(foodTableModel, selectedFoodTableModel);
-            
+
         } else {
-            
+
             refreshFoodTable(foodTableModel);
-            
+
         }
-        
+
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
-        
+
         // Gets the restaurant name from the combo box and fills the tables accordingly
-        
         Restaurant restaurant;
         RestaurantData restaurantData = new RestaurantData();
-        
+
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
         DefaultTableModel selectedFoodTableModel = (DefaultTableModel) selectedFoodTable.getModel();
-        
+
         String restaurantName;
-        
+
         restaurantName = restaurantComboBox.getSelectedItem().toString();
         restaurant = restaurantData.getRestaurantDetails(restaurantName);
-        
+
         refreshSelectedFoodTable(selectedFoodTableModel, restaurant.getRestaurantNo());
-        
+
         if (selectedFoodTable.getRowCount() > 0) {
-            
+
             refreshFoodTable(foodTableModel, selectedFoodTableModel);
-            
+
         } else {
-            
+
             refreshFoodTable(foodTableModel);
-            
+
         }
 
     }//GEN-LAST:event_chooseButtonActionPerformed
 
     private void removeAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeAllButtonActionPerformed
-        
+
         // Remove all the foods
-        
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
         DefaultTableModel selectedFoodTableModel = (DefaultTableModel) selectedFoodTable.getModel();
-        
+
         for (int i = 0; i < selectedFoodTableModel.getRowCount(); i++) {
             foodTableModel.addRow(new Object[]{selectedFoodTableModel.getValueAt(i, 0)});
         }
-        
+
         while (selectedFoodTableModel.getRowCount() > 0) {
             selectedFoodTableModel.removeRow(0);
         }
@@ -492,56 +491,53 @@ public class AssignFoodForm extends javax.swing.JFrame {
     }//GEN-LAST:event_removeAllButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        
+
         // Remove the selected food
-        
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
         DefaultTableModel selectedFoodTableModel = (DefaultTableModel) selectedFoodTable.getModel();
-        
+
         String selectedFood;
         int selectedRow;
-        
+
         selectedRow = selectedFoodTable.getSelectedRow();
         selectedFood = selectedFoodTable.getValueAt(selectedRow, 0).toString();
-        
+
         foodTableModel.addRow(new Object[]{selectedFood});
         selectedFoodTableModel.removeRow(selectedRow);
-        
+
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        
+
         // Add the selected food
-        
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
         DefaultTableModel selectedFoodTableModel = (DefaultTableModel) selectedFoodTable.getModel();
-        
+
         String selectedFood;
         int selectedRow;
-        
+
         selectedRow = foodTable.getSelectedRow();
         selectedFood = foodTable.getValueAt(selectedRow, 0).toString();
-        
+
         selectedFoodTableModel.addRow(new Object[]{selectedFood});
         foodTableModel.removeRow(selectedRow);
-        
+
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void addAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAllButtonActionPerformed
-        
+
         // Add all the foods
-        
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
         DefaultTableModel selectedFoodTableModel = (DefaultTableModel) selectedFoodTable.getModel();
-        
+
         for (int i = 0; i < foodTableModel.getRowCount(); i++) {
             selectedFoodTableModel.addRow(new Object[]{foodTableModel.getValueAt(i, 0)});
         }
-        
+
         while (foodTableModel.getRowCount() > 0) {
             foodTableModel.removeRow(0);
         }
-        
+
     }//GEN-LAST:event_addAllButtonActionPerformed
 
     /**

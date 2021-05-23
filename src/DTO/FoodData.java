@@ -31,7 +31,7 @@ public class FoodData {
 
         ArrayList<Food> foodList = new ArrayList<>();
 
-        String query = "SELECT * FROM `food`";
+        String query = "SELECT * FROM `food` order by `NAME`";
 
         try {
 
