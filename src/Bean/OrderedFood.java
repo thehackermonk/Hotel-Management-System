@@ -5,26 +5,14 @@
  */
 package Bean;
 
-import java.sql.Date;
-
 /**
  *
  * @author thehackermonk
  */
-public class FoodProduction {
-
-    int restaurantNo;
-    int foodNo;
-    Date productionDate;
-    int quantity;
-
-    public int getRestaurantNo() {
-        return restaurantNo;
-    }
-
-    public void setRestaurantNo(int restaurantNo) {
-        this.restaurantNo = restaurantNo;
-    }
+public class OrderedFood {
+    
+    private int foodNo;
+    private int quantity;
 
     public int getFoodNo() {
         return foodNo;
@@ -34,14 +22,6 @@ public class FoodProduction {
         this.foodNo = foodNo;
     }
 
-    public Date getProductionDate() {
-        return productionDate;
-    }
-
-    public void setProductionDate(Date productionDate) {
-        this.productionDate = productionDate;
-    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -49,5 +29,5 @@ public class FoodProduction {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
+    
 }

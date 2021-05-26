@@ -42,7 +42,46 @@ public class FoodProductionData {
                 foodProduction.setRestaurantNo(rs.getInt("restaurant_no"));
                 foodProduction.setFoodNo(rs.getInt("food"));
                 foodProduction.setProductionDate(rs.getDate("date"));
-                foodProduction.setCount(rs.getInt("quantity"));
+                foodProduction.setQuantity(rs.getInt("quantity"));
+
+                foodProductionList.add(foodProduction);
+
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return foodProductionList;
+
+    }
+
+    public ArrayList<FoodProduction> getFoodProducedToday(int restaurantNo, Date date) {
+
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "SELECT * FROM `todays_food` WHERE `date`='" + date + "' and `restaurant_no`=" + restaurantNo;
+
+        ArrayList<FoodProduction> foodProductionList = new ArrayList<>();
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                FoodProduction foodProduction = new FoodProduction();
+
+                foodProduction.setRestaurantNo(rs.getInt("restaurant_no"));
+                foodProduction.setFoodNo(rs.getInt("food"));
+                foodProduction.setProductionDate(rs.getDate("date"));
+                foodProduction.setQuantity(rs.getInt("quantity"));
 
                 foodProductionList.add(foodProduction);
 
@@ -90,7 +129,7 @@ public class FoodProductionData {
 
         DBConnect dbConnect = new DBConnect();
 
-        String query = "INSERT INTO `todays_food` (`restaurant_no`, `food`, `date`, `quantity`) VALUES ('" + foodProduction.getRestaurantNo() + "', '" + foodProduction.getFoodNo() + "', '" + foodProduction.getProductionDate() + "', '" + foodProduction.getCount() + "')";
+        String query = "INSERT INTO `todays_food` (`restaurant_no`, `food`, `date`, `quantity`) VALUES ('" + foodProduction.getRestaurantNo() + "', '" + foodProduction.getFoodNo() + "', '" + foodProduction.getProductionDate() + "', '" + foodProduction.getQuantity() + "')";
 
         try {
 
@@ -101,6 +140,32 @@ public class FoodProductionData {
                 return true;
             }
 
+            stmt.close();
+            conn.close();
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return false;
+
+    }
+
+    public boolean buyFood(FoodProduction foodProduction) {
+
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "UPDATE `todays_food` SET `quantity`=" + foodProduction.getQuantity() + " WHERE `restaurant_no`=" + foodProduction.getRestaurantNo() + " AND `food`=" + foodProduction.getFoodNo();
+        
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+
+            if (stmt.executeUpdate(query) == 1) {
+                return true;
+            }
+            
             stmt.close();
             conn.close();
 

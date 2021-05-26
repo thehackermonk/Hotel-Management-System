@@ -116,6 +116,7 @@ public class RoomsData {
     public ArrayList<Room> getRoomUnderMaintenance() {
 
         DBConnect dbConnect = new DBConnect();
+
         ArrayList<Room> roomList = new ArrayList<>();
 
         String query = "select * from rooms where maintenance=1";
@@ -153,9 +154,44 @@ public class RoomsData {
     public ArrayList<Room> getRoomNotUnderMaintenance() {
 
         DBConnect dbConnect = new DBConnect();
+
         ArrayList<Room> roomList = new ArrayList<>();
 
         String query = "select * from rooms where maintenance=0";
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                Room room = new Room();
+                room.setRoomNo(rs.getInt("room_no"));
+                roomList.add(room);
+
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return roomList;
+
+    }
+
+    public ArrayList<Room> getOccupiedRooms() {
+
+        DBConnect dbConnect = new DBConnect();
+
+        ArrayList<Room> roomList = new ArrayList<>();
+
+        String query = "SELECT * FROM `rooms` WHERE `status`='Occupied'";
 
         try {
 

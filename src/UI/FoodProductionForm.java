@@ -57,7 +57,7 @@ public class FoodProductionForm extends javax.swing.JFrame {
             foodName = foodData.getFoodDetails(foodProduction.getFoodNo()).getName();
             restaurantName = restaurantData.getRestaurantDetails(foodProduction.getRestaurantNo()).getName();
             
-            tableModel.addRow(new Object[]{restaurantName, foodName, foodProduction.getCount()});
+            tableModel.addRow(new Object[]{restaurantName, foodName, foodProduction.getQuantity()});
             
         }
         
@@ -429,7 +429,7 @@ public class FoodProductionForm extends javax.swing.JFrame {
             
             foodProduction.setRestaurantNo(restaurant.getRestaurantNo());
             foodProduction.setFoodNo(food.getNdbNo());
-            foodProduction.setCount(Integer.parseInt(foodProductionTableModel.getValueAt(i, 2).toString()));
+            foodProduction.setQuantity(Integer.parseInt(foodProductionTableModel.getValueAt(i, 2).toString()));
             
             foodProductionList.add(foodProduction);
             
