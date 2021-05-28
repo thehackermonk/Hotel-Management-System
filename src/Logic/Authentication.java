@@ -32,4 +32,35 @@ public class Authentication {
 
     }
 
+    public String changePassword(Credential login, String newPassword) throws NoSuchAlgorithmException {
+
+        AuthenticationData authenticationData = new AuthenticationData();
+        Hashing hashing = new Hashing();
+
+        String errorMessage = null, hashedPassword;
+
+        if (checkLogin(login)) {
+
+            hashedPassword = hashing.encode(newPassword);
+
+            if (authenticationData.changePassword(login.getUserName(), hashedPassword)) {
+
+                errorMessage = null;
+
+            } else {
+
+                errorMessage = "Unable to change password!";
+
+            }
+
+        } else {
+
+            errorMessage = "Incorrect credentials!";
+
+        }
+
+        return errorMessage;
+
+    }
+
 }

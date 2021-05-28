@@ -59,4 +59,27 @@ public class AuthenticationData {
 
     }
 
+    public boolean changePassword(String userID, String password) {
+
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "UPDATE `auth` SET `password`='" + password + "' WHERE `login`='" + userID + "'";
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+
+            if (stmt.executeUpdate(query) == 1) {
+                return true;
+            }
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return false;
+
+    }
+
 }
