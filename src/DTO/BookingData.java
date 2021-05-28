@@ -20,6 +20,11 @@ import java.util.ArrayList;
  */
 public class BookingData {
 
+    /**
+     * Get all bookings details
+     * 
+     * @return list of all the bookings
+     */
     public ArrayList<Booking> getAllBookingDetails() {
 
         DBConnect dbConnect = new DBConnect();
@@ -263,6 +268,45 @@ public class BookingData {
         }
 
         return false;
+
+    }
+
+    /**
+     * Get details of a particular booking
+     * 
+     * @param bookingID
+     * @return Details of the booking
+     */
+    public Booking getBookingDetails(int bookingID) {
+
+        Booking booking = new Booking();
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "SELECT * FROM `booking` WHERE `booking_id`=" + bookingID;
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                booking.setBookingID(rs.getInt("booking_id"));
+                booking.setName(rs.getString("name"));
+                booking.setContact(rs.getString("contact"));
+                booking.setRoomNo(rs.getInt("room_no"));
+                booking.setFromDate(rs.getDate("from_date").toLocalDate());
+                booking.setToDate(rs.getDate("to_date").toLocalDate());
+                booking.setPayment(rs.getFloat("payment"));
+
+            }
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return booking;
 
     }
 
