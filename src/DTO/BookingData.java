@@ -22,7 +22,7 @@ public class BookingData {
 
     /**
      * Get all bookings details
-     * 
+     *
      * @return list of all the bookings
      */
     public ArrayList<Booking> getAllBookingDetails() {
@@ -273,7 +273,7 @@ public class BookingData {
 
     /**
      * Get details of a particular booking
-     * 
+     *
      * @param bookingID
      * @return Details of the booking
      */
@@ -307,6 +307,54 @@ public class BookingData {
         }
 
         return booking;
+
+    }
+
+    /**
+     * Search bookings with name
+     * 
+     * @param name
+     * @return list of booking with particular name
+     */
+    public ArrayList<Booking> searchBookings(String name) {
+
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "SELECT * FROM `booking` WHERE `name` like '%" + name + "%'";
+
+        ArrayList<Booking> bookingList = new ArrayList<>();
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                Booking booking = new Booking();
+
+                booking.setBookingID(rs.getInt("booking_id"));
+                booking.setName(rs.getString("name"));
+                booking.setContact(rs.getString("contact"));
+                booking.setRoomNo(rs.getInt("room_no"));
+                booking.setFromDate(rs.getDate("from_date").toLocalDate());
+                booking.setToDate(rs.getDate("to_date").toLocalDate());
+                booking.setPayment(rs.getFloat("payment"));
+
+                bookingList.add(booking);
+
+            }
+            
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return bookingList;
 
     }
 

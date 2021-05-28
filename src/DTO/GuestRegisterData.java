@@ -22,8 +22,103 @@ import java.util.ArrayList;
 public class GuestRegisterData {
 
     /**
+     * Get details of all the guest
+     *
+     * @return Details of guest
+     */
+    public ArrayList<GuestRegister> getAllGuestDetails() {
+
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "SELECT r.register_no,g.name,g.address,g.telephone,r.check_in,r.check_out,r.room_no FROM guest g, guest_register r WHERE g.guest_id=r.guest_id";
+
+        ArrayList<GuestRegister> guestRegisterList = new ArrayList<>();
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                GuestRegister guestRegister = new GuestRegister();
+
+                guestRegister.setRegisterNo(rs.getInt("register_no"));
+                guestRegister.setName(rs.getString("name"));
+                guestRegister.setAddress(rs.getString("address"));
+                guestRegister.setTelephoneNo(rs.getString("telephone"));
+                guestRegister.setCheckInDate(rs.getDate("check_in"));
+                guestRegister.setCheckOutDate(rs.getDate("check_out"));
+                guestRegister.setRoomNo(rs.getInt("room_no"));
+
+                guestRegisterList.add(guestRegister);
+
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return guestRegisterList;
+
+    }
+
+    /**
+     * Get details of all the guest with a particular name
+     *
+     * @param name: Name to search with
+     * @return Details of guest
+     */
+    public ArrayList<GuestRegister> searchGuestDetails(String name) {
+
+        DBConnect dbConnect = new DBConnect();
+
+        String query = "SELECT r.register_no,g.name,g.address,g.telephone,r.check_in,r.check_out,r.room_no FROM guest g, guest_register r WHERE g.guest_id=r.guest_id AND g.name like '%" + name + "%'";
+
+        ArrayList<GuestRegister> guestRegisterList = new ArrayList<>();
+
+        try {
+
+            Connection conn = dbConnect.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+
+                GuestRegister guestRegister = new GuestRegister();
+
+                guestRegister.setRegisterNo(rs.getInt("register_no"));
+                guestRegister.setName(rs.getString("name"));
+                guestRegister.setAddress(rs.getString("address"));
+                guestRegister.setTelephoneNo(rs.getString("telephone"));
+                guestRegister.setCheckInDate(rs.getDate("check_in"));
+                guestRegister.setCheckOutDate(rs.getDate("check_out"));
+                guestRegister.setRoomNo(rs.getInt("room_no"));
+
+                guestRegisterList.add(guestRegister);
+
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (IOException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return guestRegisterList;
+
+    }
+
+    /**
      * Get list of all the rooms which are currently occupied
-     * 
+     *
      * @return List of rooms
      */
     public ArrayList<GuestRegister> getOccupiedRooms() {
@@ -67,7 +162,7 @@ public class GuestRegisterData {
 
     /**
      * Get details of guest who is staying in a particular room
-     * 
+     *
      * @param roomNo
      * @return Details of guest
      */
@@ -106,9 +201,9 @@ public class GuestRegisterData {
     }
 
     /**
-     * To check out of the hotel
-     * Function adds a check out date to the guest register
-     * 
+     * To check out of the hotel Function adds a check out date to the guest
+     * register
+     *
      * @param roomNo
      * @param checkInDate
      * @param checkOutDate
