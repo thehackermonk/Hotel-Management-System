@@ -328,7 +328,7 @@ public class MaintenanceForm extends javax.swing.JFrame {
                 .addGap(86, 86, 86))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -368,6 +368,11 @@ public class MaintenanceForm extends javax.swing.JFrame {
         });
 
         closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -501,6 +506,13 @@ public class MaintenanceForm extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_removeCompleteMaintenanceActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        
+        this.setVisible(false);
+        new MaintenanceMenu().show();
+        
+    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments

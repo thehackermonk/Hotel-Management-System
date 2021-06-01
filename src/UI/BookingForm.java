@@ -192,7 +192,7 @@ public class BookingForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
         bookRoomButton = new javax.swing.JButton();
         checkAvailabilityButton = new javax.swing.JButton();
         cancelBookingButton = new javax.swing.JButton();
@@ -278,7 +278,7 @@ public class BookingForm extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -344,7 +344,12 @@ public class BookingForm extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel7.setText("Payment");
 
-        jButton1.setText("X");
+        closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
 
         bookRoomButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         bookRoomButton.setText("BOOK ROOM");
@@ -378,7 +383,7 @@ public class BookingForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -417,7 +422,7 @@ public class BookingForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -496,9 +501,13 @@ public class BookingForm extends javax.swing.JFrame {
         fromDate = fromDateChooser.getDate();
         toDate = toDateChooser.getDate();
 
-        payment = billing.calculateAdvancePayment(type, fromDate, toDate, percentage);
+        if (type.equals("")) {
 
-        paymentTextField.setText(payment + "");
+            payment = billing.calculateAdvancePayment(type, fromDate, toDate, percentage);
+
+            paymentTextField.setText(payment + "");
+
+        }
 
     }//GEN-LAST:event_paymentTextFieldFocusGained
 
@@ -624,6 +633,13 @@ public class BookingForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_delDeleteButtonActionPerformed
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        
+        this.setVisible(false);
+        new FrontOfficeMenu().show();
+        
+    }//GEN-LAST:event_closeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -664,13 +680,13 @@ public class BookingForm extends javax.swing.JFrame {
     private javax.swing.JButton cancelBookingButton;
     private javax.swing.JDialog cancelBookingDialog;
     private javax.swing.JButton checkAvailabilityButton;
+    private javax.swing.JButton closeButton;
     private javax.swing.JTextField contactTextField;
     private javax.swing.JTable delBookingsTable;
     private javax.swing.JTextField delContactTextField;
     private javax.swing.JButton delDeleteButton;
     private javax.swing.JTextField delNameTextField;
     private com.toedter.calendar.JDateChooser fromDateChooser;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

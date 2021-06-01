@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author thehackermonk
  */
-public class ResturantTypeForm extends javax.swing.JFrame {
+public class RestaurantTypeForm extends javax.swing.JFrame {
 
     /**
      * Creates new form ResturantTypeForm
      */
-    public ResturantTypeForm() {
+    public RestaurantTypeForm() {
         initComponents();
     }
 
@@ -145,6 +145,7 @@ public class ResturantTypeForm extends javax.swing.JFrame {
         restaurantTypeTable = new javax.swing.JTable();
         addTypeButton = new javax.swing.JButton();
         removeTypeButton = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
 
         addRestaurantTypeTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         addRestaurantTypeTextField.setText("jTextField1");
@@ -279,7 +280,7 @@ public class ResturantTypeForm extends javax.swing.JFrame {
                 .addContainerGap(120, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -323,25 +324,39 @@ public class ResturantTypeForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(250, 250, 250))
             .addGroup(layout.createSequentialGroup()
                 .addGap(425, 425, 425)
                 .addComponent(addTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(150, 150, 150)
                 .addComponent(removeTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(250, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(250, 250, 250))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(closeButton)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addContainerGap()
+                .addComponent(closeButton)
+                .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -461,6 +476,13 @@ public class ResturantTypeForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_removeTypeButtonFocusGained
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        
+        this.setVisible(false);
+        new FoodnBeverageMenu().show();
+        
+    }//GEN-LAST:event_closeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -478,20 +500,21 @@ public class ResturantTypeForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ResturantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RestaurantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ResturantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RestaurantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ResturantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RestaurantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ResturantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RestaurantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ResturantTypeForm().setVisible(true);
+                new RestaurantTypeForm().setVisible(true);
             }
         });
     }
@@ -502,6 +525,7 @@ public class ResturantTypeForm extends javax.swing.JFrame {
     private javax.swing.JTextField addRestaurantTypeTextField;
     private javax.swing.JButton addTypeButton;
     private javax.swing.JDialog addTypeDialog;
+    private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

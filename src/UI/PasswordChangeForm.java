@@ -51,8 +51,9 @@ public class PasswordChangeForm extends javax.swing.JFrame {
         changePasswordField = new javax.swing.JButton();
         oldPasswordField = new javax.swing.JPasswordField();
         newPasswordField = new javax.swing.JPasswordField();
+        closeButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -90,6 +91,13 @@ public class PasswordChangeForm extends javax.swing.JFrame {
         newPasswordField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         newPasswordField.setText("jPasswordField2");
 
+        closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,12 +118,17 @@ public class PasswordChangeForm extends javax.swing.JFrame {
                         .addGap(503, 503, 503))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(changePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(518, 518, 518))))
+                        .addGap(518, 518, 518))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(closeButton)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(280, 280, 280)
+                .addContainerGap()
+                .addComponent(closeButton)
+                .addGap(244, 244, 244)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(userIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,6 +184,13 @@ public class PasswordChangeForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_changePasswordFieldActionPerformed
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        
+        this.setVisible(false);
+        new MainMenu().show();
+        
+    }//GEN-LAST:event_closeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -208,6 +228,7 @@ public class PasswordChangeForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton changePasswordField;
+    private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

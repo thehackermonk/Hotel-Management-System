@@ -50,7 +50,10 @@ public class LoginForm extends javax.swing.JFrame {
         try {
 
             if (authenticate.checkLogin(login)) {
-                System.out.println("Succcess");
+
+                this.setVisible(false);
+                new MainMenu().show();
+
             } else {
 
                 JOptionPane.showMessageDialog(null, "Authentication failed!", "A La Carte", JOptionPane.ERROR_MESSAGE);

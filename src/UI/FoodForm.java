@@ -163,6 +163,11 @@ public class FoodForm extends javax.swing.JFrame {
         addDescriptionTextArea.setLineWrap(true);
         addDescriptionTextArea.setRows(5);
         addDescriptionTextArea.setWrapStyleWord(true);
+        addDescriptionTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                addDescriptionTextAreaKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(addDescriptionTextArea);
 
         addPriceTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -253,6 +258,11 @@ public class FoodForm extends javax.swing.JFrame {
         modifyFoodDescriptionTextArea.setLineWrap(true);
         modifyFoodDescriptionTextArea.setRows(5);
         modifyFoodDescriptionTextArea.setWrapStyleWord(true);
+        modifyFoodDescriptionTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                modifyFoodDescriptionTextAreaKeyReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(modifyFoodDescriptionTextArea);
 
         modifyFoodNameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -414,7 +424,7 @@ public class FoodForm extends javax.swing.JFrame {
                 .addContainerGap(135, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -462,6 +472,11 @@ public class FoodForm extends javax.swing.JFrame {
         });
 
         closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -575,8 +590,8 @@ public class FoodForm extends javax.swing.JFrame {
 
     private void editFoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editFoodButtonActionPerformed
 
-        Sort sort=new Sort();
-        
+        Sort sort = new Sort();
+
         DefaultComboBoxModel nameComboBoxModel = (DefaultComboBoxModel) modifyFoodNameCombo.getModel();
 
         modifyFoodDialog.setSize(800, 600);
@@ -661,8 +676,8 @@ public class FoodForm extends javax.swing.JFrame {
 
     private void removeFoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFoodButtonActionPerformed
 
-        Sort sort=new Sort();
-        
+        Sort sort = new Sort();
+
         DefaultComboBoxModel foodNameComboBoxModel = (DefaultComboBoxModel) removeFoodNameComboBox.getModel();
 
         removeFoodDialog.setSize(800, 600);
@@ -704,6 +719,43 @@ public class FoodForm extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_removeButtonActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+
+        this.setVisible(false);
+        new FoodnBeverageMenu().show();
+
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void addDescriptionTextAreaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addDescriptionTextAreaKeyReleased
+
+        String string;
+
+        string = addDescriptionTextArea.getText();
+
+        if (string.length() > 100) {
+
+            string = string.substring(0, string.length() - 1);
+            addDescriptionTextArea.setText(string);
+
+        }
+
+    }//GEN-LAST:event_addDescriptionTextAreaKeyReleased
+
+    private void modifyFoodDescriptionTextAreaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_modifyFoodDescriptionTextAreaKeyReleased
+
+        String string;
+
+        string = modifyFoodDescriptionTextArea.getText();
+
+        if (string.length() > 100) {
+
+            string = string.substring(0, string.length() - 1);
+            modifyFoodDescriptionTextArea.setText(string);
+
+        }
+
+    }//GEN-LAST:event_modifyFoodDescriptionTextAreaKeyReleased
 
     /**
      * @param args the command line arguments

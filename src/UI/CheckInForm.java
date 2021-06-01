@@ -295,7 +295,7 @@ public class CheckInForm extends javax.swing.JFrame {
                 .addContainerGap(152, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -311,6 +311,11 @@ public class CheckInForm extends javax.swing.JFrame {
         addressTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         addressTextArea.setLineWrap(true);
         addressTextArea.setRows(5);
+        addressTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                addressTextAreaKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(addressTextArea);
 
         telTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -344,6 +349,11 @@ public class CheckInForm extends javax.swing.JFrame {
         purposeOfVisitTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         purposeOfVisitTextArea.setLineWrap(true);
         purposeOfVisitTextArea.setRows(5);
+        purposeOfVisitTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                purposeOfVisitTextAreaKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(purposeOfVisitTextArea);
 
         noOfPeopleLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -387,6 +397,11 @@ public class CheckInForm extends javax.swing.JFrame {
         });
 
         closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -593,6 +608,43 @@ public class CheckInForm extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_passportCompleteButtonActionPerformed
+
+    private void addressTextAreaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addressTextAreaKeyReleased
+
+        String string;
+
+        string = addressTextArea.getText();
+
+        if (string.length() > 300) {
+
+            string = string.substring(0, string.length() - 1);
+            addressTextArea.setText(string);
+
+        }
+
+    }//GEN-LAST:event_addressTextAreaKeyReleased
+
+    private void purposeOfVisitTextAreaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_purposeOfVisitTextAreaKeyReleased
+
+        String string;
+
+        string = purposeOfVisitTextArea.getText();
+
+        if (string.length() > 100) {
+
+            string = string.substring(0, string.length() - 1);
+            purposeOfVisitTextArea.setText(string);
+
+        }
+
+    }//GEN-LAST:event_purposeOfVisitTextAreaKeyReleased
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+
+        this.setVisible(false);
+        new FrontOfficeMenu().show();
+
+    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments

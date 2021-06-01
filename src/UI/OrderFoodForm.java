@@ -15,7 +15,6 @@ import DTO.RestaurantData;
 import DTO.RoomsData;
 import Logic.OrderFoodLogic;
 import Logic.Validation;
-import com.mysql.cj.util.StringUtils;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -149,8 +148,9 @@ public class OrderFoodForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         totalPriceTextField = new javax.swing.JTextField();
         quantityTextField = new javax.swing.JTextField();
+        closeButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -268,6 +268,13 @@ public class OrderFoodForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -310,7 +317,10 @@ public class OrderFoodForm extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(totalPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(245, 245, 245))))))
+                                .addGap(245, 245, 245))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(closeButton)
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,7 +355,9 @@ public class OrderFoodForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addContainerGap()
+                        .addComponent(closeButton)
+                        .addGap(36, 36, 36)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -540,6 +552,13 @@ public class OrderFoodForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_quantityTextFieldFocusLost
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        
+        this.setVisible(false);
+        new FrontOfficeMenu().show();
+        
+    }//GEN-LAST:event_closeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -577,6 +596,7 @@ public class OrderFoodForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addFoodButton;
+    private javax.swing.JButton closeButton;
     private javax.swing.JComboBox<String> foodComboBox;
     private javax.swing.JTable foodTable;
     private javax.swing.JLabel jLabel1;

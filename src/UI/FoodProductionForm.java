@@ -120,8 +120,9 @@ public class FoodProductionForm extends javax.swing.JFrame {
         restaurantFoodTable = new javax.swing.JTable();
         produceFoodButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -212,6 +213,13 @@ public class FoodProductionForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -245,10 +253,15 @@ public class FoodProductionForm extends javax.swing.JFrame {
                 .addGap(94, 94, 94))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(produceFoodButton)
-                .addGap(42, 42, 42)
-                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(220, 220, 220))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(produceFoodButton)
+                        .addGap(42, 42, 42)
+                        .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(220, 220, 220))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(closeButton)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,7 +283,9 @@ public class FoodProductionForm extends javax.swing.JFrame {
                 .addComponent(addFoodButton)
                 .addGap(218, 218, 218))
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addContainerGap()
+                .addComponent(closeButton)
+                .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -469,6 +484,13 @@ public class FoodProductionForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_countTextFieldKeyReleased
 
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        
+        this.setVisible(false);
+        new FoodnBeverageMenu().show();
+        
+    }//GEN-LAST:event_closeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -507,6 +529,7 @@ public class FoodProductionForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addFoodButton;
     private javax.swing.JButton clearButton;
+    private javax.swing.JButton closeButton;
     private javax.swing.JTextField countTextField;
     private javax.swing.JButton decreaseCountButton;
     private javax.swing.JComboBox<String> foodComboBox;

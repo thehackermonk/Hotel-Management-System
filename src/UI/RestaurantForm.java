@@ -356,7 +356,7 @@ public class RestaurantForm extends javax.swing.JFrame {
                 .addContainerGap(180, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -413,6 +413,11 @@ public class RestaurantForm extends javax.swing.JFrame {
 
         closeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         closeButton.setText("X");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
 
         restaurantTypeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         restaurantTypeButton.setText("RESTAURANT TYPE");
@@ -570,7 +575,7 @@ public class RestaurantForm extends javax.swing.JFrame {
 
     private void restaurantTypeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restaurantTypeButtonActionPerformed
 
-        new ResturantTypeForm().setVisible(true);
+        new RestaurantTypeForm().setVisible(true);
 
     }//GEN-LAST:event_restaurantTypeButtonActionPerformed
 
@@ -627,6 +632,13 @@ public class RestaurantForm extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_removeRestaurantButtonActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        
+        this.setVisible(false);
+        new FoodnBeverageMenu().show();
+        
+    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments
