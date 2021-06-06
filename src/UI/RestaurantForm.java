@@ -10,11 +10,13 @@ import Bean.RestaurantType;
 import DTO.RestaurantData;
 import DTO.RestaurantTypeData;
 import Logic.Sort;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -27,6 +29,45 @@ public class RestaurantForm extends javax.swing.JFrame {
      */
     public RestaurantForm() {
         initComponents();
+    }
+
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+        addRestaurantDialog.getContentPane().setBackground(new Color(246, 252, 252));
+        modifyRestaurantDialog.getContentPane().setBackground(new Color(246, 252, 252));
+        removeRestaurantDialog.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+        addNameLabel.setForeground(new Color(45, 58, 84));
+        addTypeLabel.setForeground(new Color(45, 58, 84));
+        modifyNameLabel.setForeground(new Color(45, 58, 84));
+        modifyTypeLabel.setForeground(new Color(45, 58, 84));
+        removeNameLabel.setForeground(new Color(45, 58, 84));
+        removeTypeLabel.setForeground(new Color(45, 58, 84));
+
+        restaurantTable.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+
+            @Override
+            public void setOpaque(boolean isOpaque) {
+                super.setOpaque(true); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setBackground(Color c) {
+                super.setBackground(new Color(45, 58, 84)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setForeground(Color c) {
+                super.setForeground(new Color(255, 255, 255)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+
     }
 
     /**
@@ -66,8 +107,8 @@ public class RestaurantForm extends javax.swing.JFrame {
 
     /**
      * To refresh the contents of restaurant name combo box
-     * 
-     * @param comboBox 
+     *
+     * @param comboBox
      */
     public void refreshRestaurantNameComboBox(DefaultComboBoxModel comboBox) {
 
@@ -90,8 +131,8 @@ public class RestaurantForm extends javax.swing.JFrame {
 
     /**
      * To refresh contents of restaurant type combo box
-     * 
-     * @param comboBox 
+     *
+     * @param comboBox
      */
     public void refreshRestaurantTypeComboBox(DefaultComboBoxModel comboBox) {
 
@@ -123,23 +164,22 @@ public class RestaurantForm extends javax.swing.JFrame {
 
         addRestaurantDialog = new javax.swing.JDialog();
         addNameTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        addNameLabel = new javax.swing.JLabel();
         addTypeComboBox = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        addTypeLabel = new javax.swing.JLabel();
         addRestaurantButton = new javax.swing.JButton();
         modifyRestaurantDialog = new javax.swing.JDialog();
         modifyRestaurantNameComboBox = new javax.swing.JComboBox<>();
         modifyRestaurantNameTextField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        modifyNameLabel = new javax.swing.JLabel();
         modifyRestaurantTypeComboBox = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        modifyTypeLabel = new javax.swing.JLabel();
         modifyRestaurantButton = new javax.swing.JButton();
-        assignFoodRestaurantDialog = new javax.swing.JDialog();
         removeRestaurantDialog = new javax.swing.JDialog();
-        jLabel5 = new javax.swing.JLabel();
+        removeNameLabel = new javax.swing.JLabel();
         removeRestaurantNameComboBox = new javax.swing.JComboBox<>();
         removeRestaurantTypeTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        removeTypeLabel = new javax.swing.JLabel();
         removeRestaurantButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         restaurantTable = new javax.swing.JTable();
@@ -149,22 +189,27 @@ public class RestaurantForm extends javax.swing.JFrame {
         removeFood = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
         restaurantTypeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
-        addNameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addNameTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addNameTextField.setText("jTextField1");
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Name");
+        addNameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addNameLabel.setText("Name");
 
-        addTypeComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addTypeComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        addTypeComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addTypeComboBox.setForeground(new java.awt.Color(45, 58, 84));
         addTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Type");
+        addTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addTypeLabel.setText("Type");
 
-        addRestaurantButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addRestaurantButton.setBackground(new java.awt.Color(108, 160, 209));
+        addRestaurantButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addRestaurantButton.setForeground(new java.awt.Color(255, 255, 255));
         addRestaurantButton.setText("ADD");
         addRestaurantButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,8 +226,8 @@ public class RestaurantForm extends javax.swing.JFrame {
                 .addGroup(addRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addRestaurantDialogLayout.createSequentialGroup()
                         .addGroup(addRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(addNameLabel)
+                            .addComponent(addTypeLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(addRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(addTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -191,25 +236,27 @@ public class RestaurantForm extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(addRestaurantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
         addRestaurantDialogLayout.setVerticalGroup(
             addRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addRestaurantDialogLayout.createSequentialGroup()
-                .addContainerGap(198, Short.MAX_VALUE)
+                .addContainerGap(189, Short.MAX_VALUE)
                 .addGroup(addRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(addNameLabel))
                 .addGap(18, 18, 18)
                 .addGroup(addRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(addTypeLabel))
                 .addGap(33, 33, 33)
                 .addComponent(addRestaurantButton)
                 .addGap(177, 177, 177))
         );
 
-        modifyRestaurantNameComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyRestaurantNameComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        modifyRestaurantNameComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyRestaurantNameComboBox.setForeground(new java.awt.Color(45, 58, 84));
         modifyRestaurantNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         modifyRestaurantNameComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -217,22 +264,26 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
-        modifyRestaurantNameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyRestaurantNameTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         modifyRestaurantNameTextField.setText("jTextField1");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Name");
+        modifyNameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        modifyNameLabel.setText("Name");
 
-        modifyRestaurantTypeComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyRestaurantTypeComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        modifyRestaurantTypeComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyRestaurantTypeComboBox.setForeground(new java.awt.Color(45, 58, 84));
         modifyRestaurantTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Type");
+        modifyTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        modifyTypeLabel.setText("Type");
 
-        modifyRestaurantButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        modifyRestaurantButton.setText("Modify Restaurant");
+        modifyRestaurantButton.setBackground(new java.awt.Color(108, 160, 209));
+        modifyRestaurantButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        modifyRestaurantButton.setForeground(new java.awt.Color(255, 255, 255));
+        modifyRestaurantButton.setText("MODIFY");
         modifyRestaurantButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modifyRestaurantButtonActionPerformed(evt);
@@ -244,61 +295,49 @@ public class RestaurantForm extends javax.swing.JFrame {
         modifyRestaurantDialogLayout.setHorizontalGroup(
             modifyRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(modifyRestaurantDialogLayout.createSequentialGroup()
-                .addGap(288, 288, 288)
                 .addGroup(modifyRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(modifyRestaurantDialogLayout.createSequentialGroup()
+                        .addGap(288, 288, 288)
                         .addGroup(modifyRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                            .addComponent(modifyNameLabel)
+                            .addComponent(modifyTypeLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(modifyRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(modifyRestaurantNameTextField)
                             .addComponent(modifyRestaurantTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modifyRestaurantDialogLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(modifyRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modifyRestaurantDialogLayout.createSequentialGroup()
-                                .addComponent(modifyRestaurantNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modifyRestaurantDialogLayout.createSequentialGroup()
-                                .addComponent(modifyRestaurantButton)
-                                .addGap(30, 30, 30)))))
-                .addContainerGap(310, Short.MAX_VALUE))
+                    .addGroup(modifyRestaurantDialogLayout.createSequentialGroup()
+                        .addGap(320, 320, 320)
+                        .addComponent(modifyRestaurantNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(modifyRestaurantDialogLayout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(modifyRestaurantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
         modifyRestaurantDialogLayout.setVerticalGroup(
             modifyRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modifyRestaurantDialogLayout.createSequentialGroup()
-                .addContainerGap(186, Short.MAX_VALUE)
+                .addContainerGap(174, Short.MAX_VALUE)
                 .addComponent(modifyRestaurantNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(modifyRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modifyRestaurantNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(modifyNameLabel))
                 .addGap(18, 18, 18)
                 .addGroup(modifyRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modifyRestaurantTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(33, 33, 33)
+                    .addComponent(modifyTypeLabel))
+                .addGap(34, 34, 34)
                 .addComponent(modifyRestaurantButton)
-                .addGap(145, 145, 145))
+                .addGap(144, 144, 144))
         );
 
-        javax.swing.GroupLayout assignFoodRestaurantDialogLayout = new javax.swing.GroupLayout(assignFoodRestaurantDialog.getContentPane());
-        assignFoodRestaurantDialog.getContentPane().setLayout(assignFoodRestaurantDialogLayout);
-        assignFoodRestaurantDialogLayout.setHorizontalGroup(
-            assignFoodRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        assignFoodRestaurantDialogLayout.setVerticalGroup(
-            assignFoodRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
+        removeNameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeNameLabel.setText("Name");
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText("Name");
-
-        removeRestaurantNameComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeRestaurantNameComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        removeRestaurantNameComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeRestaurantNameComboBox.setForeground(new java.awt.Color(45, 58, 84));
         removeRestaurantNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         removeRestaurantNameComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -306,14 +345,16 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
-        removeRestaurantTypeTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeRestaurantTypeTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         removeRestaurantTypeTextField.setText("jTextField1");
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel6.setText("Type");
+        removeTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeTypeLabel.setText("Type");
 
-        removeRestaurantButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeRestaurantButton.setBackground(new java.awt.Color(108, 160, 209));
+        removeRestaurantButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        removeRestaurantButton.setForeground(new java.awt.Color(255, 255, 255));
         removeRestaurantButton.setText("REMOVE");
         removeRestaurantButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,8 +369,8 @@ public class RestaurantForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, removeRestaurantDialogLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(removeRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(removeNameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(removeTypeLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(removeRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(removeRestaurantTypeTextField)
@@ -345,15 +386,15 @@ public class RestaurantForm extends javax.swing.JFrame {
             .addGroup(removeRestaurantDialogLayout.createSequentialGroup()
                 .addGap(190, 190, 190)
                 .addGroup(removeRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(removeNameLabel)
                     .addComponent(removeRestaurantNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(removeRestaurantDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeRestaurantTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(removeTypeLabel))
                 .addGap(38, 38, 38)
                 .addComponent(removeRestaurantButton)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -365,7 +406,7 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
-        restaurantTable.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        restaurantTable.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         restaurantTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -379,7 +420,9 @@ public class RestaurantForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(restaurantTable);
 
-        addButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addButton.setBackground(new java.awt.Color(108, 160, 209));
+        addButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("ADD");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,7 +430,9 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
-        modifyButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyButton.setBackground(new java.awt.Color(108, 160, 209));
+        modifyButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        modifyButton.setForeground(new java.awt.Color(255, 255, 255));
         modifyButton.setText("MODIFY");
         modifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -395,7 +440,9 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
-        assignFood.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        assignFood.setBackground(new java.awt.Color(108, 160, 209));
+        assignFood.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        assignFood.setForeground(new java.awt.Color(255, 255, 255));
         assignFood.setText("ASSIGN FOOD");
         assignFood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,7 +450,9 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
-        removeFood.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeFood.setBackground(new java.awt.Color(108, 160, 209));
+        removeFood.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        removeFood.setForeground(new java.awt.Color(255, 255, 255));
         removeFood.setText("REMOVE");
         removeFood.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -411,7 +460,9 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
         closeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -419,7 +470,9 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
-        restaurantTypeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        restaurantTypeButton.setBackground(new java.awt.Color(108, 160, 209));
+        restaurantTypeButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        restaurantTypeButton.setForeground(new java.awt.Color(255, 255, 255));
         restaurantTypeButton.setText("RESTAURANT TYPE");
         restaurantTypeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,36 +480,46 @@ public class RestaurantForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Restaurant");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(225, 225, 225)
+                .addGap(283, 283, 283)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addComponent(modifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(assignFood, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
+                        .addComponent(assignFood)
+                        .addGap(36, 36, 36)
                         .addComponent(restaurantTypeButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(removeFood, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(closeButton)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(titleLabel)
+                        .addGap(629, 629, 629))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(47, 47, 47)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addGap(63, 63, 63)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -465,13 +528,15 @@ public class RestaurantForm extends javax.swing.JFrame {
                     .addComponent(assignFood, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeFood, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(restaurantTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+        setTheme();
 
         refreshRestaurantTable();
 
@@ -568,9 +633,9 @@ public class RestaurantForm extends javax.swing.JFrame {
     }//GEN-LAST:event_modifyRestaurantButtonActionPerformed
 
     private void assignFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignFoodActionPerformed
-        
+
         new AssignFoodForm().setVisible(true);
-        
+
     }//GEN-LAST:event_assignFoodActionPerformed
 
     private void restaurantTypeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restaurantTypeButtonActionPerformed
@@ -634,10 +699,10 @@ public class RestaurantForm extends javax.swing.JFrame {
     }//GEN-LAST:event_removeRestaurantButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        
+
         this.setVisible(false);
         new FoodnBeverageMenu().show();
-        
+
     }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
@@ -649,7 +714,7 @@ public class RestaurantForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -664,7 +729,7 @@ public class RestaurantForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RestaurantForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RestaurantForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -677,32 +742,32 @@ public class RestaurantForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JLabel addNameLabel;
     private javax.swing.JTextField addNameTextField;
     private javax.swing.JButton addRestaurantButton;
     private javax.swing.JDialog addRestaurantDialog;
     private javax.swing.JComboBox<String> addTypeComboBox;
+    private javax.swing.JLabel addTypeLabel;
     private javax.swing.JButton assignFood;
-    private javax.swing.JDialog assignFoodRestaurantDialog;
     private javax.swing.JButton closeButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modifyButton;
+    private javax.swing.JLabel modifyNameLabel;
     private javax.swing.JButton modifyRestaurantButton;
     private javax.swing.JDialog modifyRestaurantDialog;
     private javax.swing.JComboBox<String> modifyRestaurantNameComboBox;
     private javax.swing.JTextField modifyRestaurantNameTextField;
     private javax.swing.JComboBox<String> modifyRestaurantTypeComboBox;
+    private javax.swing.JLabel modifyTypeLabel;
     private javax.swing.JButton removeFood;
+    private javax.swing.JLabel removeNameLabel;
     private javax.swing.JButton removeRestaurantButton;
     private javax.swing.JDialog removeRestaurantDialog;
     private javax.swing.JComboBox<String> removeRestaurantNameComboBox;
     private javax.swing.JTextField removeRestaurantTypeTextField;
+    private javax.swing.JLabel removeTypeLabel;
     private javax.swing.JTable restaurantTable;
     private javax.swing.JButton restaurantTypeButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

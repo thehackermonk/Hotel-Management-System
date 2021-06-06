@@ -8,6 +8,7 @@ package UI;
 import Bean.GuestRegister;
 import DTO.GuestRegisterData;
 import Logic.Billing;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +31,24 @@ public class CheckOutForm extends javax.swing.JFrame {
      */
     public CheckOutForm() {
         initComponents();
+    }
+
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+        roomNoLabel.setForeground(new Color(45, 58, 84));
+        contactLabel.setForeground(new Color(45, 58, 84));
+        checkInLabel.setForeground(new Color(45, 58, 84));
+        checkOutLabel.setForeground(new Color(45, 58, 84));
+        bookingIDLabel.setForeground(new Color(45, 58, 84));
+        totalAmountLabel.setForeground(new Color(45, 58, 84));
+        amountPayableLabel.setForeground(new Color(45, 58, 84));
+
     }
 
     /**
@@ -112,24 +131,26 @@ public class CheckOutForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        roomNoLabel = new javax.swing.JLabel();
         roomNoComboBox = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         contactNoTextField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        contactLabel = new javax.swing.JLabel();
         checkInDateTextField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        checkInLabel = new javax.swing.JLabel();
+        checkOutLabel = new javax.swing.JLabel();
         checkOutDateChooser = new com.toedter.calendar.JDateChooser();
         amountPayableTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        amountPayableLabel = new javax.swing.JLabel();
         checkOutButton = new javax.swing.JButton();
         bookingIDTextField = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        bookingIDLabel = new javax.swing.JLabel();
         totalAmountTextField = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        totalAmountLabel = new javax.swing.JLabel();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -140,11 +161,13 @@ public class CheckOutForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Room No");
+        roomNoLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomNoLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        roomNoLabel.setText("Room No");
 
-        roomNoComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomNoComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        roomNoComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomNoComboBox.setForeground(new java.awt.Color(45, 58, 84));
         roomNoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         roomNoComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -152,33 +175,35 @@ public class CheckOutForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Name");
+        nameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        nameLabel.setText("Name");
 
-        nameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        nameTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         nameTextField.setText("jTextField1");
 
-        contactNoTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        contactNoTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         contactNoTextField.setText("jTextField2");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Contact No");
+        contactLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        contactLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        contactLabel.setText("Contact No");
 
-        checkInDateTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        checkInDateTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         checkInDateTextField.setText("jTextField3");
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setText("Check In Date");
+        checkInLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        checkInLabel.setText("Check In Date");
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText("Check Out Date");
+        checkOutLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        checkOutLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        checkOutLabel.setText("Check Out Date");
 
-        checkOutDateChooser.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        checkOutDateChooser.setBackground(new java.awt.Color(246, 252, 252));
+        checkOutDateChooser.setForeground(new java.awt.Color(45, 58, 84));
+        checkOutDateChooser.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
 
-        amountPayableTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        amountPayableTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         amountPayableTextField.setText("jTextField4");
         amountPayableTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -186,11 +211,13 @@ public class CheckOutForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel6.setText("Amount Payable");
+        amountPayableLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        amountPayableLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        amountPayableLabel.setText("Amount Payable");
 
-        checkOutButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        checkOutButton.setBackground(new java.awt.Color(108, 160, 209));
+        checkOutButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        checkOutButton.setForeground(new java.awt.Color(255, 255, 255));
         checkOutButton.setText("Check Out");
         checkOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,7 +225,7 @@ public class CheckOutForm extends javax.swing.JFrame {
             }
         });
 
-        bookingIDTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        bookingIDTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         bookingIDTextField.setText("jTextField1");
         bookingIDTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -206,11 +233,11 @@ public class CheckOutForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel9.setText("Booking ID");
+        bookingIDLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        bookingIDLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        bookingIDLabel.setText("Booking ID");
 
-        totalAmountTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        totalAmountTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         totalAmountTextField.setText("jTextField1");
         totalAmountTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -218,10 +245,12 @@ public class CheckOutForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel10.setText("Total Amount");
+        totalAmountLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        totalAmountLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        totalAmountLabel.setText("Total Amount");
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,81 +258,102 @@ public class CheckOutForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Check Out");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Hotel.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(558, 558, 558)
-                .addComponent(checkOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(557, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(485, 485, 485)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(amountPayableTextField)
-                    .addComponent(totalAmountTextField)
-                    .addComponent(bookingIDTextField)
-                    .addComponent(contactNoTextField)
-                    .addComponent(nameTextField)
-                    .addComponent(roomNoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(checkOutDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(checkInDateTextField))
+                .addGap(632, 632, 632)
+                .addComponent(titleLabel)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(closeButton)
-                .addContainerGap())
+                .addGap(100, 100, 100)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(checkOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(checkOutLabel)
+                            .addComponent(roomNoLabel)
+                            .addComponent(nameLabel)
+                            .addComponent(contactLabel)
+                            .addComponent(checkInLabel)
+                            .addComponent(bookingIDLabel)
+                            .addComponent(totalAmountLabel)
+                            .addComponent(amountPayableLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(amountPayableTextField)
+                            .addComponent(totalAmountTextField)
+                            .addComponent(bookingIDTextField)
+                            .addComponent(contactNoTextField)
+                            .addComponent(nameTextField)
+                            .addComponent(roomNoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(checkOutDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(checkInDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(215, 215, 215))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(109, 109, 109)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(roomNoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkInDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(checkOutDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bookingIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(totalAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(amountPayableTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(38, 38, 38)
-                .addComponent(checkOutButton)
-                .addContainerGap(143, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(roomNoLabel)
+                            .addComponent(roomNoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(contactNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contactLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(checkInDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkInLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(checkOutLabel)
+                            .addComponent(checkOutDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bookingIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bookingIDLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(totalAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(totalAmountLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(amountPayableTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(amountPayableLabel))
+                        .addGap(38, 38, 38)
+                        .addComponent(checkOutButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(titleLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                                .addComponent(jLabel8)))))
+                .addGap(150, 150, 150))
         );
 
         pack();
@@ -311,11 +361,15 @@ public class CheckOutForm extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
 
+        setTheme();
+
         clear();
         refreshRoomNoComboBox();
 
         amountPayableTextField.setEditable(false);
         totalAmountTextField.setEditable(false);
+        
+        roomNoComboBox.requestFocus();
 
     }//GEN-LAST:event_formWindowGainedFocus
 
@@ -379,10 +433,10 @@ public class CheckOutForm extends javax.swing.JFrame {
     }//GEN-LAST:event_totalAmountTextFieldFocusGained
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        
+
         this.setVisible(false);
         new FrontOfficeMenu().show();
-        
+
     }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
@@ -394,7 +448,7 @@ public class CheckOutForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -409,7 +463,7 @@ public class CheckOutForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CheckOutForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CheckOutForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -421,23 +475,25 @@ public class CheckOutForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amountPayableLabel;
     private javax.swing.JTextField amountPayableTextField;
+    private javax.swing.JLabel bookingIDLabel;
     private javax.swing.JTextField bookingIDTextField;
     private javax.swing.JTextField checkInDateTextField;
+    private javax.swing.JLabel checkInLabel;
     private javax.swing.JButton checkOutButton;
     private com.toedter.calendar.JDateChooser checkOutDateChooser;
+    private javax.swing.JLabel checkOutLabel;
     private javax.swing.JButton closeButton;
+    private javax.swing.JLabel contactLabel;
     private javax.swing.JTextField contactNoTextField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JComboBox<String> roomNoComboBox;
+    private javax.swing.JLabel roomNoLabel;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JLabel totalAmountLabel;
     private javax.swing.JTextField totalAmountTextField;
     // End of variables declaration//GEN-END:variables
 }

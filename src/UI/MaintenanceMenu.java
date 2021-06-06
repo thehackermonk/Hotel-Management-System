@@ -5,6 +5,8 @@
  */
 package UI;
 
+import java.awt.Color;
+
 /**
  *
  * @author thehackermonk
@@ -16,6 +18,17 @@ public class MaintenanceMenu extends javax.swing.JFrame {
      */
     public MaintenanceMenu() {
         initComponents();
+    }
+    
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+
     }
 
     /**
@@ -31,9 +44,20 @@ public class MaintenanceMenu extends javax.swing.JFrame {
         roomsButton = new javax.swing.JButton();
         roomTypesButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
+        maintenanceButton.setBackground(new java.awt.Color(36, 53, 69));
+        maintenanceButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        maintenanceButton.setForeground(new java.awt.Color(255, 255, 255));
         maintenanceButton.setText("MAINTENANCE");
         maintenanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -41,6 +65,9 @@ public class MaintenanceMenu extends javax.swing.JFrame {
             }
         });
 
+        roomsButton.setBackground(new java.awt.Color(36, 53, 69));
+        roomsButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        roomsButton.setForeground(new java.awt.Color(255, 255, 255));
         roomsButton.setText("ROOMS");
         roomsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +75,9 @@ public class MaintenanceMenu extends javax.swing.JFrame {
             }
         });
 
+        roomTypesButton.setBackground(new java.awt.Color(36, 53, 69));
+        roomTypesButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        roomTypesButton.setForeground(new java.awt.Color(255, 255, 255));
         roomTypesButton.setText("ROOM TYPES");
         roomTypesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +85,8 @@ public class MaintenanceMenu extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,34 +94,45 @@ public class MaintenanceMenu extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 28)); // NOI18N
+        titleLabel.setText("Maintenance");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(maintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(roomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(roomTypesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(closeButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(maintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(roomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(roomTypesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 300, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(608, 608, 608)
+                .addComponent(titleLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(189, 189, 189)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94)
+                .addComponent(titleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(maintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roomsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(roomTypesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addGap(248, 248, 248))
         );
 
         pack();
@@ -123,6 +166,12 @@ public class MaintenanceMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_closeButtonActionPerformed
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        
+        setTheme();
+        
+    }//GEN-LAST:event_formWindowGainedFocus
+
     /**
      * @param args the command line arguments
      */
@@ -132,7 +181,7 @@ public class MaintenanceMenu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -147,7 +196,7 @@ public class MaintenanceMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MaintenanceMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MaintenanceMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -163,5 +212,6 @@ public class MaintenanceMenu extends javax.swing.JFrame {
     private javax.swing.JButton maintenanceButton;
     private javax.swing.JButton roomTypesButton;
     private javax.swing.JButton roomsButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

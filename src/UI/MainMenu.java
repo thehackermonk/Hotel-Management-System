@@ -5,6 +5,8 @@
  */
 package UI;
 
+import java.awt.Color;
+
 /**
  *
  * @author thehackermonk
@@ -16,6 +18,17 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+    }
+    
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+
     }
 
     /**
@@ -33,9 +46,20 @@ public class MainMenu extends javax.swing.JFrame {
         reportsButton = new javax.swing.JButton();
         changePasswordButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
+        frontOfficeButton.setBackground(new java.awt.Color(36, 53, 69));
+        frontOfficeButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        frontOfficeButton.setForeground(new java.awt.Color(255, 255, 255));
         frontOfficeButton.setText("FRONT OFFICE");
         frontOfficeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -43,6 +67,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        maintenanceButton.setBackground(new java.awt.Color(36, 53, 69));
+        maintenanceButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        maintenanceButton.setForeground(new java.awt.Color(255, 255, 255));
         maintenanceButton.setText("MAINTENANCE");
         maintenanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +77,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        foodNBeveragesButton.setBackground(new java.awt.Color(36, 53, 69));
+        foodNBeveragesButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        foodNBeveragesButton.setForeground(new java.awt.Color(255, 255, 255));
         foodNBeveragesButton.setText("FOOD & BEVERAGES");
         foodNBeveragesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +87,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        reportsButton.setBackground(new java.awt.Color(36, 53, 69));
+        reportsButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        reportsButton.setForeground(new java.awt.Color(255, 255, 255));
         reportsButton.setText("REPORTS");
         reportsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +97,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        changePasswordButton.setBackground(new java.awt.Color(36, 53, 69));
+        changePasswordButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        changePasswordButton.setForeground(new java.awt.Color(255, 255, 255));
         changePasswordButton.setText("CHANGE PASSWORD");
         changePasswordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +107,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        exitButton.setBackground(new java.awt.Color(36, 53, 69));
+        exitButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        exitButton.setForeground(new java.awt.Color(255, 255, 255));
         exitButton.setText("EXIT");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,43 +117,50 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Dialog", 0, 28)); // NOI18N
+        titleLabel.setText("A La Carte");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
+                .addGap(120, 120, 120)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(frontOfficeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(frontOfficeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
-                        .addComponent(maintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(maintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(changePasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(foodNBeveragesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
-                        .addComponent(foodNBeveragesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(reportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                        .addComponent(reportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addGap(616, 616, 616))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(titleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(frontOfficeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(maintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(foodNBeveragesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(reportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(frontOfficeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(maintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(foodNBeveragesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(reportsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(108, 108, 108)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(changePasswordButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,6 +207,12 @@ public class MainMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        
+        setTheme();
+        
+    }//GEN-LAST:event_formWindowGainedFocus
+
     /**
      * @param args the command line arguments
      */
@@ -170,7 +222,7 @@ public class MainMenu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -185,7 +237,7 @@ public class MainMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -203,5 +255,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton frontOfficeButton;
     private javax.swing.JButton maintenanceButton;
     private javax.swing.JButton reportsButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

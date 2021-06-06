@@ -5,6 +5,8 @@
  */
 package UI;
 
+import java.awt.Color;
+
 /**
  *
  * @author thehackermonk
@@ -16,6 +18,17 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
      */
     public FrontOfficeMenu() {
         initComponents();
+    }
+    
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+
     }
 
     /**
@@ -33,11 +46,22 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
         bookingButton = new javax.swing.JButton();
         orderFoodButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
         jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
+        checkInButton.setBackground(new java.awt.Color(36, 53, 69));
+        checkInButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        checkInButton.setForeground(new java.awt.Color(255, 255, 255));
         checkInButton.setText("CHECK IN");
         checkInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -45,6 +69,9 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
             }
         });
 
+        checkOutButton.setBackground(new java.awt.Color(36, 53, 69));
+        checkOutButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        checkOutButton.setForeground(new java.awt.Color(255, 255, 255));
         checkOutButton.setText("CHECK OUT");
         checkOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +79,9 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
             }
         });
 
+        bookingButton.setBackground(new java.awt.Color(36, 53, 69));
+        bookingButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        bookingButton.setForeground(new java.awt.Color(255, 255, 255));
         bookingButton.setText("BOOKING");
         bookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +89,9 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
             }
         });
 
+        orderFoodButton.setBackground(new java.awt.Color(36, 53, 69));
+        orderFoodButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        orderFoodButton.setForeground(new java.awt.Color(255, 255, 255));
         orderFoodButton.setText("ORDER FOOD");
         orderFoodButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +99,8 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,12 +108,15 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 28)); // NOI18N
+        titleLabel.setText("Front Office");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
+                .addGap(170, 170, 170)
                 .addComponent(checkInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addComponent(checkOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -86,24 +124,31 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
                 .addComponent(bookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addComponent(orderFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(closeButton)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(titleLabel)
+                        .addGap(614, 614, 614))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(189, 189, 189)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94)
+                .addComponent(titleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(orderFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addGap(248, 248, 248))
         );
 
         pack();
@@ -144,6 +189,12 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_closeButtonActionPerformed
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        
+        setTheme();
+        
+    }//GEN-LAST:event_formWindowGainedFocus
+
     /**
      * @param args the command line arguments
      */
@@ -153,7 +204,7 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -168,7 +219,7 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrontOfficeMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrontOfficeMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -186,5 +237,6 @@ public class FrontOfficeMenu extends javax.swing.JFrame {
     private javax.swing.JButton closeButton;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton orderFoodButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

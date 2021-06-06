@@ -7,11 +7,13 @@ package UI;
 
 import Bean.RoomType;
 import DTO.RoomTypeData;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -24,6 +26,47 @@ public class RoomTypeForm extends javax.swing.JFrame {
      */
     public RoomTypeForm() {
         initComponents();
+    }
+
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+        roomTypeAddDialog.getContentPane().setBackground(new Color(246, 252, 252));
+        roomTypeEditDialog.getContentPane().setBackground(new Color(246, 252, 252));
+        roomTypeRemoveDialog.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+        addRoomTypeLabel.setForeground(new Color(45, 58, 84));
+        addPriceLabel.setForeground(new Color(45, 58, 84));
+        addCapacityLabel.setForeground(new Color(45, 58, 84));
+        modifyRoomTypeLabel.setForeground(new Color(45, 58, 84));
+        modifyPriceLabel.setForeground(new Color(45, 58, 84));
+        modifyCapacityLabel.setForeground(new Color(45, 58, 84));
+        editCapacityLabel.setForeground(new Color(45, 58, 84));
+        removeRoomTypeLabel.setForeground(new Color(45, 58, 84));
+
+        roomTypeTable.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+
+            @Override
+            public void setOpaque(boolean isOpaque) {
+                super.setOpaque(true); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setBackground(Color c) {
+                super.setBackground(new Color(45, 58, 84)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setForeground(Color c) {
+                super.setForeground(new Color(255, 255, 255)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+
     }
 
     /**
@@ -68,7 +111,7 @@ public class RoomTypeForm extends javax.swing.JFrame {
 
             RoomType roomType = roomTypeListIterator.next();
 
-            roomTypeTableModel.addRow(new Object[]{roomType.getType(), roomType.getPrice(),roomType.getCapacity()});
+            roomTypeTableModel.addRow(new Object[]{roomType.getType(), roomType.getPrice(), roomType.getCapacity()});
 
         }
 
@@ -136,27 +179,28 @@ public class RoomTypeForm extends javax.swing.JFrame {
     private void initComponents() {
 
         roomTypeAddDialog = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        addRoomTypeLabel = new javax.swing.JLabel();
+        addPriceLabel = new javax.swing.JLabel();
         roomTypeAddTypeTextField = new javax.swing.JTextField();
         roomTypeAddPriceTextField = new javax.swing.JTextField();
         addRoomTypeAddButton = new javax.swing.JButton();
         roomTypeAddCapacitySlider = new javax.swing.JSlider();
-        jLabel6 = new javax.swing.JLabel();
+        addCapacityLabel = new javax.swing.JLabel();
         addRoomTypeCountLabel = new javax.swing.JLabel();
         roomTypeEditDialog = new javax.swing.JDialog();
         roomTypeEditTypeCombo = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        modifyRoomTypeLabel = new javax.swing.JLabel();
         roomTypeEditTypeTextField = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        modifyPriceLabel = new javax.swing.JLabel();
         roomTypeEditPriceTextField = new javax.swing.JTextField();
         editRoomTypeSaveButton = new javax.swing.JButton();
         editCapacitySlider = new javax.swing.JSlider();
         editCapacityLabel = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        modifyCapacityLabel = new javax.swing.JLabel();
         roomTypeRemoveDialog = new javax.swing.JDialog();
         roomTypeRemoveTypeCombo = new javax.swing.JComboBox<>();
         removeRoomTypeRemoveButton = new javax.swing.JButton();
+        removeRoomTypeLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         roomTypeTable = new javax.swing.JTable();
@@ -164,16 +208,17 @@ public class RoomTypeForm extends javax.swing.JFrame {
         editButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Room Type");
+        addRoomTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addRoomTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addRoomTypeLabel.setText("Room Type");
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Price");
+        addPriceLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addPriceLabel.setText("Price");
 
-        roomTypeAddTypeTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeAddTypeTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         roomTypeAddTypeTextField.setText("jTextField1");
         roomTypeAddTypeTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -181,10 +226,12 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
-        roomTypeAddPriceTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeAddPriceTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         roomTypeAddPriceTextField.setText("jTextField2");
 
-        addRoomTypeAddButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addRoomTypeAddButton.setBackground(new java.awt.Color(108, 160, 209));
+        addRoomTypeAddButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addRoomTypeAddButton.setForeground(new java.awt.Color(255, 255, 255));
         addRoomTypeAddButton.setText("ADD");
         addRoomTypeAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +239,7 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
-        roomTypeAddCapacitySlider.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeAddCapacitySlider.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         roomTypeAddCapacitySlider.setMaximum(15);
         roomTypeAddCapacitySlider.setValue(0);
         roomTypeAddCapacitySlider.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -201,10 +248,11 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel6.setText("Capacity");
+        addCapacityLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addCapacityLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addCapacityLabel.setText("Capacity");
 
+        addRoomTypeCountLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addRoomTypeCountLabel.setText("0");
 
         javax.swing.GroupLayout roomTypeAddDialogLayout = new javax.swing.GroupLayout(roomTypeAddDialog.getContentPane());
@@ -218,9 +266,9 @@ public class RoomTypeForm extends javax.swing.JFrame {
             .addGroup(roomTypeAddDialogLayout.createSequentialGroup()
                 .addGap(277, 277, 277)
                 .addGroup(roomTypeAddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6))
+                    .addComponent(addPriceLabel)
+                    .addComponent(addRoomTypeLabel)
+                    .addComponent(addCapacityLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(roomTypeAddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(roomTypeAddTypeTextField)
@@ -229,7 +277,7 @@ public class RoomTypeForm extends javax.swing.JFrame {
                         .addComponent(roomTypeAddCapacitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addRoomTypeCountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(283, Short.MAX_VALUE))
         );
         roomTypeAddDialogLayout.setVerticalGroup(
             roomTypeAddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,23 +286,25 @@ public class RoomTypeForm extends javax.swing.JFrame {
                 .addGroup(roomTypeAddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(roomTypeAddDialogLayout.createSequentialGroup()
                         .addGroup(roomTypeAddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
+                            .addComponent(addRoomTypeLabel)
                             .addComponent(roomTypeAddTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(roomTypeAddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
+                            .addComponent(addPriceLabel)
                             .addComponent(roomTypeAddPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(roomTypeAddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(roomTypeAddCapacitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addRoomTypeCountLabel)))
-                    .addComponent(jLabel6))
+                    .addComponent(addCapacityLabel))
                 .addGap(34, 34, 34)
                 .addComponent(addRoomTypeAddButton)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
-        roomTypeEditTypeCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeEditTypeCombo.setBackground(new java.awt.Color(246, 252, 252));
+        roomTypeEditTypeCombo.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomTypeEditTypeCombo.setForeground(new java.awt.Color(45, 58, 84));
         roomTypeEditTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         roomTypeEditTypeCombo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -262,11 +312,11 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Room Type");
+        modifyRoomTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyRoomTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        modifyRoomTypeLabel.setText("Room Type");
 
-        roomTypeEditTypeTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeEditTypeTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         roomTypeEditTypeTextField.setText("jTextField1");
         roomTypeEditTypeTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -274,14 +324,16 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText("Price");
+        modifyPriceLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        modifyPriceLabel.setText("Price");
 
-        roomTypeEditPriceTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeEditPriceTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         roomTypeEditPriceTextField.setText("jTextField2");
 
-        editRoomTypeSaveButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        editRoomTypeSaveButton.setBackground(new java.awt.Color(108, 160, 209));
+        editRoomTypeSaveButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        editRoomTypeSaveButton.setForeground(new java.awt.Color(255, 255, 255));
         editRoomTypeSaveButton.setText("SAVE");
         editRoomTypeSaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,9 +353,9 @@ public class RoomTypeForm extends javax.swing.JFrame {
         editCapacityLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         editCapacityLabel.setText("0");
 
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel8.setText("Capacity");
+        modifyCapacityLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyCapacityLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        modifyCapacityLabel.setText("Capacity");
 
         javax.swing.GroupLayout roomTypeEditDialogLayout = new javax.swing.GroupLayout(roomTypeEditDialog.getContentPane());
         roomTypeEditDialog.getContentPane().setLayout(roomTypeEditDialogLayout);
@@ -320,9 +372,9 @@ public class RoomTypeForm extends javax.swing.JFrame {
                     .addGroup(roomTypeEditDialogLayout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addGroup(roomTypeEditDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel8))
+                            .addComponent(modifyPriceLabel)
+                            .addComponent(modifyRoomTypeLabel)
+                            .addComponent(modifyCapacityLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(roomTypeEditDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(roomTypeEditTypeTextField)
@@ -331,7 +383,7 @@ public class RoomTypeForm extends javax.swing.JFrame {
                                 .addComponent(editCapacitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(editCapacityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addContainerGap(288, Short.MAX_VALUE))
         );
         roomTypeEditDialogLayout.setVerticalGroup(
             roomTypeEditDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,26 +392,30 @@ public class RoomTypeForm extends javax.swing.JFrame {
                 .addComponent(roomTypeEditTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(roomTypeEditDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(modifyRoomTypeLabel)
                     .addComponent(roomTypeEditTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(roomTypeEditDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(modifyPriceLabel)
                     .addComponent(roomTypeEditPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(roomTypeEditDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editCapacitySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
+                    .addComponent(modifyCapacityLabel)
                     .addComponent(editCapacityLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(editRoomTypeSaveButton)
                 .addGap(92, 92, 92))
         );
 
-        roomTypeRemoveTypeCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeRemoveTypeCombo.setBackground(new java.awt.Color(246, 252, 252));
+        roomTypeRemoveTypeCombo.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomTypeRemoveTypeCombo.setForeground(new java.awt.Color(45, 58, 84));
         roomTypeRemoveTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        removeRoomTypeRemoveButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeRoomTypeRemoveButton.setBackground(new java.awt.Color(108, 160, 209));
+        removeRoomTypeRemoveButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        removeRoomTypeRemoveButton.setForeground(new java.awt.Color(255, 255, 255));
         removeRoomTypeRemoveButton.setText("REMOVE");
         removeRoomTypeRemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,25 +423,33 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
+        removeRoomTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeRoomTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeRoomTypeLabel.setText("Room Type");
+
         javax.swing.GroupLayout roomTypeRemoveDialogLayout = new javax.swing.GroupLayout(roomTypeRemoveDialog.getContentPane());
         roomTypeRemoveDialog.getContentPane().setLayout(roomTypeRemoveDialogLayout);
         roomTypeRemoveDialogLayout.setHorizontalGroup(
             roomTypeRemoveDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roomTypeRemoveDialogLayout.createSequentialGroup()
-                .addGap(321, 321, 321)
-                .addGroup(roomTypeRemoveDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roomTypeRemoveTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(roomTypeRemoveDialogLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(removeRoomTypeRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addGap(333, 333, 333)
+                .addComponent(removeRoomTypeRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(347, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomTypeRemoveDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(removeRoomTypeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(roomTypeRemoveTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(275, 275, 275))
         );
         roomTypeRemoveDialogLayout.setVerticalGroup(
             roomTypeRemoveDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roomTypeRemoveDialogLayout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
-                .addComponent(roomTypeRemoveTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addContainerGap(218, Short.MAX_VALUE)
+                .addGroup(roomTypeRemoveDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(roomTypeRemoveTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeRoomTypeLabel))
+                .addGap(41, 41, 41)
                 .addComponent(removeRoomTypeRemoveButton)
                 .addGap(182, 182, 182))
         );
@@ -401,7 +465,7 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
-        roomTypeTable.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeTable.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         roomTypeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -415,7 +479,9 @@ public class RoomTypeForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(roomTypeTable);
 
-        addButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addButton.setBackground(new java.awt.Color(108, 160, 209));
+        addButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("ADD");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -423,7 +489,9 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
-        editButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        editButton.setBackground(new java.awt.Color(108, 160, 209));
+        editButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        editButton.setForeground(new java.awt.Color(255, 255, 255));
         editButton.setText("EDIT");
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -431,7 +499,9 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
-        removeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeButton.setBackground(new java.awt.Color(108, 160, 209));
+        removeButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        removeButton.setForeground(new java.awt.Color(255, 255, 255));
         removeButton.setText("REMOVE");
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,6 +509,8 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,54 +518,66 @@ public class RoomTypeForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Room Type");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(313, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(152, 152, 152)
-                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(153, 153, 153)
-                            .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(313, 313, 313))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(297, 297, 297)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(1313, Short.MAX_VALUE)
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(152, 152, 152)
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(153, 153, 153)
+                        .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 345, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addGap(627, 627, 627))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(275, 275, 275)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(editButton)
-                    .addComponent(removeButton))
-                .addContainerGap(114, Short.MAX_VALUE))
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(113, 113, 113))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        
+
         this.setVisible(false);
         new MaintenanceMenu().show();
-        
+
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+        setTheme();
 
         refreshRoomTypeTable();
 
@@ -648,17 +732,17 @@ public class RoomTypeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_roomTypeEditTypeTextFieldKeyReleased
 
     private void roomTypeAddCapacitySliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_roomTypeAddCapacitySliderStateChanged
-        
-        int capacity=roomTypeAddCapacitySlider.getValue();
+
+        int capacity = roomTypeAddCapacitySlider.getValue();
         addRoomTypeCountLabel.setText(String.valueOf(capacity));
-        
+
     }//GEN-LAST:event_roomTypeAddCapacitySliderStateChanged
 
     private void editCapacitySliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_editCapacitySliderStateChanged
-        
-        int capacity=editCapacitySlider.getValue();
+
+        int capacity = editCapacitySlider.getValue();
         editCapacityLabel.setText(String.valueOf(capacity));
-        
+
     }//GEN-LAST:event_editCapacitySliderStateChanged
 
     /**
@@ -670,7 +754,7 @@ public class RoomTypeForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -685,7 +769,7 @@ public class RoomTypeForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RoomTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RoomTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
         //</editor-fold>
 
@@ -699,22 +783,23 @@ public class RoomTypeForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JLabel addCapacityLabel;
+    private javax.swing.JLabel addPriceLabel;
     private javax.swing.JButton addRoomTypeAddButton;
     private javax.swing.JLabel addRoomTypeCountLabel;
+    private javax.swing.JLabel addRoomTypeLabel;
     private javax.swing.JButton closeButton;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel editCapacityLabel;
     private javax.swing.JSlider editCapacitySlider;
     private javax.swing.JButton editRoomTypeSaveButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel modifyCapacityLabel;
+    private javax.swing.JLabel modifyPriceLabel;
+    private javax.swing.JLabel modifyRoomTypeLabel;
     private javax.swing.JButton removeButton;
+    private javax.swing.JLabel removeRoomTypeLabel;
     private javax.swing.JButton removeRoomTypeRemoveButton;
     private javax.swing.JSlider roomTypeAddCapacitySlider;
     private javax.swing.JDialog roomTypeAddDialog;
@@ -727,5 +812,6 @@ public class RoomTypeForm extends javax.swing.JFrame {
     private javax.swing.JDialog roomTypeRemoveDialog;
     private javax.swing.JComboBox<String> roomTypeRemoveTypeCombo;
     private javax.swing.JTable roomTypeTable;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

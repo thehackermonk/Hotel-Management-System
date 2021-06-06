@@ -7,11 +7,13 @@ package UI;
 
 import Bean.RestaurantType;
 import DTO.RestaurantTypeData;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -24,6 +26,42 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
      */
     public RestaurantTypeForm() {
         initComponents();
+    }
+    
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+        addTypeDialog.getContentPane().setBackground(new Color(246, 252, 252));
+        removeTypeDialog.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+        addRestaurantTypeLabel.setForeground(new Color(45, 58, 84));
+        addDescriptionLabel.setForeground(new Color(45, 58, 84));
+        removeRestaurantTypeLabel.setForeground(new Color(45, 58, 84));
+        removeDrescriptionLabel.setForeground(new Color(45, 58, 84));
+
+        restaurantTypeTable.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+
+            @Override
+            public void setOpaque(boolean isOpaque) {
+                super.setOpaque(true); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setBackground(Color c) {
+                super.setBackground(new Color(45, 58, 84)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setForeground(Color c) {
+                super.setForeground(new Color(255, 255, 255)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+
     }
 
     /**
@@ -131,23 +169,24 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
         addRestaurantTypeTextField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         addDescriptionTextArea = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        addRestaurantTypeLabel = new javax.swing.JLabel();
+        addDescriptionLabel = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         removeTypeDialog = new javax.swing.JDialog();
         removeRestaurantTypeComboBox = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        removeRestaurantTypeLabel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         removeDescriptionTextArea = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
+        removeDrescriptionLabel = new javax.swing.JLabel();
         removeButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         restaurantTypeTable = new javax.swing.JTable();
         addTypeButton = new javax.swing.JButton();
         removeTypeButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
-        addRestaurantTypeTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addRestaurantTypeTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addRestaurantTypeTextField.setText("jTextField1");
         addRestaurantTypeTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -156,21 +195,23 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
         });
 
         addDescriptionTextArea.setColumns(20);
-        addDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addDescriptionTextArea.setLineWrap(true);
         addDescriptionTextArea.setRows(5);
         addDescriptionTextArea.setWrapStyleWord(true);
         jScrollPane2.setViewportView(addDescriptionTextArea);
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Restaurant Type");
+        addRestaurantTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addRestaurantTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addRestaurantTypeLabel.setText("Restaurant Type");
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Description");
+        addDescriptionLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addDescriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addDescriptionLabel.setText("Description");
 
-        addButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addButton.setBackground(new java.awt.Color(108, 160, 209));
+        addButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("ADD");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,10 +224,10 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
         addTypeDialogLayout.setHorizontalGroup(
             addTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addTypeDialogLayout.createSequentialGroup()
-                .addContainerGap(246, Short.MAX_VALUE)
+                .addContainerGap(233, Short.MAX_VALUE)
                 .addGroup(addTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(addRestaurantTypeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addDescriptionLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addRestaurantTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
@@ -203,17 +244,19 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
                 .addGap(164, 164, 164)
                 .addGroup(addTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addRestaurantTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(addRestaurantTypeLabel))
                 .addGap(18, 18, 18)
                 .addGroup(addTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(addDescriptionLabel))
                 .addGap(27, 27, 27)
                 .addComponent(addButton)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
-        removeRestaurantTypeComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeRestaurantTypeComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        removeRestaurantTypeComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeRestaurantTypeComboBox.setForeground(new java.awt.Color(45, 58, 84));
         removeRestaurantTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         removeRestaurantTypeComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -221,22 +264,24 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Restaurant Type");
+        removeRestaurantTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeRestaurantTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeRestaurantTypeLabel.setText("Restaurant Type");
 
         removeDescriptionTextArea.setColumns(20);
-        removeDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         removeDescriptionTextArea.setLineWrap(true);
         removeDescriptionTextArea.setRows(5);
         removeDescriptionTextArea.setWrapStyleWord(true);
         jScrollPane3.setViewportView(removeDescriptionTextArea);
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Description");
+        removeDrescriptionLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeDrescriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeDrescriptionLabel.setText("Description");
 
-        removeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeButton.setBackground(new java.awt.Color(108, 160, 209));
+        removeButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        removeButton.setForeground(new java.awt.Color(255, 255, 255));
         removeButton.setText("REMOVE");
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,12 +294,12 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
         removeTypeDialogLayout.setHorizontalGroup(
             removeTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(removeTypeDialogLayout.createSequentialGroup()
-                .addContainerGap(263, Short.MAX_VALUE)
+                .addContainerGap(250, Short.MAX_VALUE)
                 .addGroup(removeTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, removeTypeDialogLayout.createSequentialGroup()
                         .addGroup(removeTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(removeRestaurantTypeLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(removeDrescriptionLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(removeTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -270,14 +315,14 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
                 .addGap(203, 203, 203)
                 .addGroup(removeTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeRestaurantTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(removeRestaurantTypeLabel))
                 .addGap(18, 18, 18)
                 .addGroup(removeTypeDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(removeDrescriptionLabel))
                 .addGap(18, 18, 18)
                 .addComponent(removeButton)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -289,7 +334,7 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
             }
         });
 
-        restaurantTypeTable.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        restaurantTypeTable.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         restaurantTypeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -303,7 +348,9 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(restaurantTypeTable);
 
-        addTypeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addTypeButton.setBackground(new java.awt.Color(108, 160, 209));
+        addTypeButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addTypeButton.setForeground(new java.awt.Color(255, 255, 255));
         addTypeButton.setText("ADD");
         addTypeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,7 +358,9 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
             }
         });
 
-        removeTypeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeTypeButton.setBackground(new java.awt.Color(108, 160, 209));
+        removeTypeButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        removeTypeButton.setForeground(new java.awt.Color(255, 255, 255));
         removeTypeButton.setText("REMOVE");
         removeTypeButton.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -324,6 +373,8 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,38 +382,47 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Restaurant Type");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(425, 425, 425)
-                .addComponent(addTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150)
-                .addComponent(removeTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(311, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(250, 250, 250))
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(closeButton)
-                        .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(156, 156, 156)
+                                .addComponent(addTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(230, 230, 230)
+                                .addComponent(removeTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(305, 305, 305))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(602, 602, 602)
+                .addComponent(titleLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(42, 42, 42)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(112, 112, 112))
         );
 
         pack();
@@ -370,6 +430,8 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
 
+        setTheme();
+        
         refreshRestaurantTypeTable();
 
     }//GEN-LAST:event_formWindowGainedFocus
@@ -492,7 +554,7 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -507,7 +569,7 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RestaurantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RestaurantTypeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
         //</editor-fold>
 
@@ -521,23 +583,24 @@ public class RestaurantTypeForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JLabel addDescriptionLabel;
     private javax.swing.JTextArea addDescriptionTextArea;
+    private javax.swing.JLabel addRestaurantTypeLabel;
     private javax.swing.JTextField addRestaurantTypeTextField;
     private javax.swing.JButton addTypeButton;
     private javax.swing.JDialog addTypeDialog;
     private javax.swing.JButton closeButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton removeButton;
     private javax.swing.JTextArea removeDescriptionTextArea;
+    private javax.swing.JLabel removeDrescriptionLabel;
     private javax.swing.JComboBox<String> removeRestaurantTypeComboBox;
+    private javax.swing.JLabel removeRestaurantTypeLabel;
     private javax.swing.JButton removeTypeButton;
     private javax.swing.JDialog removeTypeDialog;
     private javax.swing.JTable restaurantTypeTable;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

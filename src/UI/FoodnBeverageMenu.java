@@ -5,6 +5,8 @@
  */
 package UI;
 
+import java.awt.Color;
+
 /**
  *
  * @author thehackermonk
@@ -16,6 +18,17 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
      */
     public FoodnBeverageMenu() {
         initComponents();
+    }
+    
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+
     }
 
     /**
@@ -34,9 +47,20 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
         assignFoodButton = new javax.swing.JButton();
         foodProductionButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
+        foodOrdersButton.setBackground(new java.awt.Color(36, 53, 69));
+        foodOrdersButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        foodOrdersButton.setForeground(new java.awt.Color(255, 255, 255));
         foodOrdersButton.setText("FOOD ORDERS");
         foodOrdersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +68,9 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
             }
         });
 
+        restaurantButton.setBackground(new java.awt.Color(36, 53, 69));
+        restaurantButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        restaurantButton.setForeground(new java.awt.Color(255, 255, 255));
         restaurantButton.setText("RESTARUANT");
         restaurantButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +78,9 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
             }
         });
 
+        restaurantTypeButton.setBackground(new java.awt.Color(36, 53, 69));
+        restaurantTypeButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        restaurantTypeButton.setForeground(new java.awt.Color(255, 255, 255));
         restaurantTypeButton.setText("RESTAURANT TYPE");
         restaurantTypeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +88,9 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
             }
         });
 
+        foodButton.setBackground(new java.awt.Color(36, 53, 69));
+        foodButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        foodButton.setForeground(new java.awt.Color(255, 255, 255));
         foodButton.setText("FOOD");
         foodButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +98,9 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
             }
         });
 
+        assignFoodButton.setBackground(new java.awt.Color(36, 53, 69));
+        assignFoodButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        assignFoodButton.setForeground(new java.awt.Color(255, 255, 255));
         assignFoodButton.setText("ASSIGN FOOD");
         assignFoodButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +108,9 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
             }
         });
 
+        foodProductionButton.setBackground(new java.awt.Color(36, 53, 69));
+        foodProductionButton.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        foodProductionButton.setForeground(new java.awt.Color(255, 255, 255));
         foodProductionButton.setText("PRODUCE FOOD");
         foodProductionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +118,8 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,12 +127,23 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 28)); // NOI18N
+        titleLabel.setText("Food & Beverages");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addGap(350, 350, 350)
+                .addComponent(foodProductionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(foodOrdersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(restaurantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -101,22 +153,20 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
                 .addComponent(foodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
                 .addComponent(assignFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(350, 350, 350)
-                .addComponent(foodProductionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(580, 580, 580)
+                .addComponent(titleLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(closeButton)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(139, 139, 139)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(titleLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(foodOrdersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(restaurantButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,6 +230,12 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_closeButtonActionPerformed
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        
+        setTheme();
+        
+    }//GEN-LAST:event_formWindowGainedFocus
+
     /**
      * @param args the command line arguments
      */
@@ -189,7 +245,7 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -204,7 +260,7 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FoodnBeverageMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FoodnBeverageMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -223,5 +279,6 @@ public class FoodnBeverageMenu extends javax.swing.JFrame {
     private javax.swing.JButton foodProductionButton;
     private javax.swing.JButton restaurantButton;
     private javax.swing.JButton restaurantTypeButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

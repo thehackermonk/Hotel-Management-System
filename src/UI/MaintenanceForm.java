@@ -9,6 +9,7 @@ import Bean.Maintenance;
 import Bean.Room;
 import DTO.MaintenanceData;
 import DTO.RoomsData;
+import java.awt.Color;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -28,6 +30,44 @@ public class MaintenanceForm extends javax.swing.JFrame {
      */
     public MaintenanceForm() {
         initComponents();
+    }
+    
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+        addMaintenanceDialog.getContentPane().setBackground(new Color(246,252,252));
+        removeMaintenanceDialog.getContentPane().setBackground(new Color(246,252,252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+        addRoomLabel.setForeground(new Color(45, 58, 84));
+        addRoomTypeLabel.setForeground(new Color(45, 58, 84));
+        addTypeOfMaintenanceLabel.setForeground(new Color(45, 58, 84));
+        removeRoomLabel.setForeground(new Color(45, 58, 84));
+        removeTypeLabel.setForeground(new Color(45, 58, 84));
+        removeDateLabel.setForeground(new Color(45, 58, 84));
+        removeCommentsLabel.setForeground(new Color(45, 58, 84));
+        
+        roomMaintenanceTable.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+
+            @Override
+            public void setOpaque(boolean isOpaque) {
+                super.setOpaque(true); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setBackground(Color c) {
+                super.setBackground(new Color(45, 58, 84)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setForeground(Color c) {
+                super.setForeground(new Color(255, 255, 255)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
     }
 
     /**
@@ -135,35 +175,38 @@ public class MaintenanceForm extends javax.swing.JFrame {
     private void initComponents() {
 
         addMaintenanceDialog = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
+        addRoomLabel = new javax.swing.JLabel();
         addRoomNoCombo = new javax.swing.JComboBox<>();
         addRoomTypeTextField = new javax.swing.JTextField();
         addTypeOfMaintenanceCombo = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        addRoomTypeLabel = new javax.swing.JLabel();
+        addTypeOfMaintenanceLabel = new javax.swing.JLabel();
         addRoomForMaintenanceButton = new javax.swing.JButton();
         removeMaintenanceDialog = new javax.swing.JDialog();
-        jLabel4 = new javax.swing.JLabel();
+        removeRoomLabel = new javax.swing.JLabel();
         removeRoomNoCombo = new javax.swing.JComboBox<>();
         removeMaintenanceTypeTextField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         removeCommentTextArea = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        removeTypeLabel = new javax.swing.JLabel();
+        removeCommentsLabel = new javax.swing.JLabel();
         removeCompleteMaintenance = new javax.swing.JButton();
         removeDateTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        removeDateLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         roomMaintenanceTable = new javax.swing.JTable();
         moveRoomButton = new javax.swing.JButton();
         completeMaintenanceButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Room No");
+        addRoomLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addRoomLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addRoomLabel.setText("Room No");
 
-        addRoomNoCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addRoomNoCombo.setBackground(new java.awt.Color(246, 252, 252));
+        addRoomNoCombo.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addRoomNoCombo.setForeground(new java.awt.Color(45, 58, 84));
         addRoomNoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         addRoomNoCombo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -171,21 +214,26 @@ public class MaintenanceForm extends javax.swing.JFrame {
             }
         });
 
-        addRoomTypeTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addRoomTypeTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addRoomTypeTextField.setText("jTextField1");
+        addRoomTypeTextField.setDisabledTextColor(new java.awt.Color(108, 160, 209));
 
-        addTypeOfMaintenanceCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addTypeOfMaintenanceCombo.setBackground(new java.awt.Color(246, 252, 252));
+        addTypeOfMaintenanceCombo.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addTypeOfMaintenanceCombo.setForeground(new java.awt.Color(45, 58, 84));
         addTypeOfMaintenanceCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Room Type");
+        addRoomTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addRoomTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addRoomTypeLabel.setText("Room Type");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Type of Maintenance");
+        addTypeOfMaintenanceLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addTypeOfMaintenanceLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addTypeOfMaintenanceLabel.setText("Type of Maintenance");
 
-        addRoomForMaintenanceButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addRoomForMaintenanceButton.setBackground(new java.awt.Color(108, 160, 209));
+        addRoomForMaintenanceButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addRoomForMaintenanceButton.setForeground(new java.awt.Color(255, 255, 255));
         addRoomForMaintenanceButton.setText("Add Room for Maintenance");
         addRoomForMaintenanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,48 +246,47 @@ public class MaintenanceForm extends javax.swing.JFrame {
         addMaintenanceDialogLayout.setHorizontalGroup(
             addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMaintenanceDialogLayout.createSequentialGroup()
-                .addGroup(addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addMaintenanceDialogLayout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addGroup(addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addTypeOfMaintenanceCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addRoomTypeTextField)
-                            .addComponent(addRoomNoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(addMaintenanceDialogLayout.createSequentialGroup()
-                        .addGap(321, 321, 321)
-                        .addComponent(addRoomForMaintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addGap(321, 321, 321)
+                .addComponent(addRoomForMaintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(244, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addMaintenanceDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addRoomLabel)
+                    .addComponent(addRoomTypeLabel)
+                    .addComponent(addTypeOfMaintenanceLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addTypeOfMaintenanceCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addRoomNoCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addRoomTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(221, 221, 221))
         );
         addMaintenanceDialogLayout.setVerticalGroup(
             addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addMaintenanceDialogLayout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addGroup(addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(addRoomLabel)
                     .addComponent(addRoomNoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addRoomTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(addRoomTypeLabel))
                 .addGap(18, 18, 18)
                 .addGroup(addMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addTypeOfMaintenanceCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(addTypeOfMaintenanceLabel))
                 .addGap(40, 40, 40)
                 .addComponent(addRoomForMaintenanceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Room No");
+        removeRoomLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeRoomLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeRoomLabel.setText("Room No");
 
-        removeRoomNoCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeRoomNoCombo.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         removeRoomNoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         removeRoomNoCombo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -247,26 +294,28 @@ public class MaintenanceForm extends javax.swing.JFrame {
             }
         });
 
-        removeMaintenanceTypeTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeMaintenanceTypeTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         removeMaintenanceTypeTextField.setText("jTextField1");
 
         removeCommentTextArea.setColumns(20);
-        removeCommentTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeCommentTextArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         removeCommentTextArea.setLineWrap(true);
         removeCommentTextArea.setRows(5);
         removeCommentTextArea.setTabSize(6);
         removeCommentTextArea.setWrapStyleWord(true);
         jScrollPane2.setViewportView(removeCommentTextArea);
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText("Type of Maintenance");
+        removeTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeTypeLabel.setText("Type of Maintenance");
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel6.setText("Comments");
+        removeCommentsLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeCommentsLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeCommentsLabel.setText("Comments");
 
-        removeCompleteMaintenance.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeCompleteMaintenance.setBackground(new java.awt.Color(108, 160, 209));
+        removeCompleteMaintenance.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        removeCompleteMaintenance.setForeground(new java.awt.Color(255, 255, 255));
         removeCompleteMaintenance.setText("Complete Maintenance");
         removeCompleteMaintenance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,28 +323,28 @@ public class MaintenanceForm extends javax.swing.JFrame {
             }
         });
 
-        removeDateTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeDateTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         removeDateTextField.setText("jTextField1");
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel7.setText("Date of Maintenance");
+        removeDateLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeDateLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeDateLabel.setText("Date of Maintenance");
 
         javax.swing.GroupLayout removeMaintenanceDialogLayout = new javax.swing.GroupLayout(removeMaintenanceDialog.getContentPane());
         removeMaintenanceDialog.getContentPane().setLayout(removeMaintenanceDialogLayout);
         removeMaintenanceDialogLayout.setHorizontalGroup(
             removeMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, removeMaintenanceDialogLayout.createSequentialGroup()
-                .addContainerGap(318, Short.MAX_VALUE)
+                .addContainerGap(304, Short.MAX_VALUE)
                 .addComponent(removeCompleteMaintenance)
-                .addGap(316, 316, 316))
+                .addGap(303, 303, 303))
             .addGroup(removeMaintenanceDialogLayout.createSequentialGroup()
                 .addGap(225, 225, 225)
                 .addGroup(removeMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(removeRoomLabel)
+                    .addComponent(removeTypeLabel)
+                    .addComponent(removeCommentsLabel)
+                    .addComponent(removeDateLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(removeMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(removeDateTextField)
@@ -310,22 +359,22 @@ public class MaintenanceForm extends javax.swing.JFrame {
                 .addGap(132, 132, 132)
                 .addGroup(removeMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeRoomNoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(removeRoomLabel))
                 .addGap(18, 18, 18)
                 .addGroup(removeMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeMaintenanceTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(removeTypeLabel))
                 .addGap(18, 18, 18)
                 .addGroup(removeMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(removeDateLabel))
                 .addGap(18, 18, 18)
                 .addGroup(removeMaintenanceDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                    .addComponent(removeCommentsLabel)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(removeCompleteMaintenance)
-                .addGap(86, 86, 86))
+                .addGap(80, 80, 80))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -337,7 +386,7 @@ public class MaintenanceForm extends javax.swing.JFrame {
             }
         });
 
-        roomMaintenanceTable.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomMaintenanceTable.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         roomMaintenanceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -351,22 +400,29 @@ public class MaintenanceForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(roomMaintenanceTable);
 
-        moveRoomButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        moveRoomButton.setText("Move Room to Maintenance");
+        moveRoomButton.setBackground(new java.awt.Color(108, 160, 209));
+        moveRoomButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        moveRoomButton.setForeground(new java.awt.Color(255, 255, 255));
+        moveRoomButton.setText("MOVE ROOM TO MAINTENANCE");
         moveRoomButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moveRoomButtonActionPerformed(evt);
             }
         });
 
-        completeMaintenanceButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        completeMaintenanceButton.setText("Complete Maintenance");
+        completeMaintenanceButton.setBackground(new java.awt.Color(108, 160, 209));
+        completeMaintenanceButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        completeMaintenanceButton.setForeground(new java.awt.Color(255, 255, 255));
+        completeMaintenanceButton.setText("COMPLETE MAINTENANCE");
         completeMaintenanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 completeMaintenanceButtonActionPerformed(evt);
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -374,36 +430,48 @@ public class MaintenanceForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Maintenance");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(325, 325, 325)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(370, 370, 370)
                         .addComponent(moveRoomButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(completeMaintenanceButton)))
-                .addContainerGap(325, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(closeButton)
+                        .addGap(200, 200, 200)
+                        .addComponent(completeMaintenanceButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(617, 617, 617)
+                .addComponent(titleLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(150, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1066, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(titleLabel)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(moveRoomButton)
                     .addComponent(completeMaintenanceButton))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(75, 75, 75))
         );
 
         pack();
@@ -411,6 +479,8 @@ public class MaintenanceForm extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
 
+        setTheme();
+        
         refreshMaintenanceTable();
 
     }//GEN-LAST:event_formWindowGainedFocus
@@ -523,7 +593,7 @@ public class MaintenanceForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -538,7 +608,7 @@ public class MaintenanceForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MaintenanceForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MaintenanceForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
         //</editor-fold>
 
@@ -553,27 +623,28 @@ public class MaintenanceForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog addMaintenanceDialog;
     private javax.swing.JButton addRoomForMaintenanceButton;
+    private javax.swing.JLabel addRoomLabel;
     private javax.swing.JComboBox<String> addRoomNoCombo;
+    private javax.swing.JLabel addRoomTypeLabel;
     private javax.swing.JTextField addRoomTypeTextField;
     private javax.swing.JComboBox<String> addTypeOfMaintenanceCombo;
+    private javax.swing.JLabel addTypeOfMaintenanceLabel;
     private javax.swing.JButton closeButton;
     private javax.swing.JButton completeMaintenanceButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton moveRoomButton;
     private javax.swing.JTextArea removeCommentTextArea;
+    private javax.swing.JLabel removeCommentsLabel;
     private javax.swing.JButton removeCompleteMaintenance;
+    private javax.swing.JLabel removeDateLabel;
     private javax.swing.JTextField removeDateTextField;
     private javax.swing.JDialog removeMaintenanceDialog;
     private javax.swing.JTextField removeMaintenanceTypeTextField;
+    private javax.swing.JLabel removeRoomLabel;
     private javax.swing.JComboBox<String> removeRoomNoCombo;
+    private javax.swing.JLabel removeTypeLabel;
     private javax.swing.JTable roomMaintenanceTable;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

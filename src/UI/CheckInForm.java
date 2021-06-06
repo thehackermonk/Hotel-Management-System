@@ -13,6 +13,7 @@ import Bean.RoomType;
 import DTO.FrontOfficeData;
 import DTO.RoomTypeData;
 import DTO.RoomsData;
+import java.awt.Color;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -33,6 +34,24 @@ public class CheckInForm extends javax.swing.JFrame {
      */
     public CheckInForm() {
         initComponents();
+    }
+    
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+        
+        titleLabel.setForeground(new Color(45, 58, 84));
+        nameLabel.setForeground(new Color(45, 58, 84));
+        addressLabel.setForeground(new Color(45, 58, 84));
+        telLabel.setForeground(new Color(45, 58, 84));
+        roomTypeLabel.setForeground(new Color(45, 58, 84));
+        roomNoLabel.setForeground(new Color(45, 58, 84));
+        noOfPeopleLabel.setForeground(new Color(45, 58, 84));
+        purposeOfVisitLabel.setForeground(new Color(45, 58, 84));
+
     }
 
     /**
@@ -161,16 +180,18 @@ public class CheckInForm extends javax.swing.JFrame {
         noOfPeopleSlider = new javax.swing.JSlider();
         jScrollPane2 = new javax.swing.JScrollPane();
         purposeOfVisitTextArea = new javax.swing.JTextArea();
+        noOfPeopleCountLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
+        telLabel = new javax.swing.JLabel();
+        roomTypeLabel = new javax.swing.JLabel();
+        roomNoLabel = new javax.swing.JLabel();
         noOfPeopleLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        purposeOfVisitLabel = new javax.swing.JLabel();
         checkInButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -304,11 +325,11 @@ public class CheckInForm extends javax.swing.JFrame {
             }
         });
 
-        nameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        nameTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         nameTextField.setText("jTextField1");
 
         addressTextArea.setColumns(20);
-        addressTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addressTextArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addressTextArea.setLineWrap(true);
         addressTextArea.setRows(5);
         addressTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -318,13 +339,17 @@ public class CheckInForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(addressTextArea);
 
-        telTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        telTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         telTextField.setText("jTextField2");
 
-        foreignerCheckBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        foreignerCheckBox.setBackground(new java.awt.Color(246, 252, 252));
+        foreignerCheckBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        foreignerCheckBox.setForeground(new java.awt.Color(45, 58, 84));
         foreignerCheckBox.setText("Are you a foreigner?");
 
-        roomTypeCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeCombo.setBackground(new java.awt.Color(246, 252, 252));
+        roomTypeCombo.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomTypeCombo.setForeground(new java.awt.Color(45, 58, 84));
         roomTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         roomTypeCombo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -332,10 +357,12 @@ public class CheckInForm extends javax.swing.JFrame {
             }
         });
 
-        roomNoCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomNoCombo.setBackground(new java.awt.Color(246, 252, 252));
+        roomNoCombo.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomNoCombo.setForeground(new java.awt.Color(45, 58, 84));
         roomNoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        noOfPeopleSlider.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        noOfPeopleSlider.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         noOfPeopleSlider.setMaximum(4);
         noOfPeopleSlider.setMinimum(1);
         noOfPeopleSlider.setValue(1);
@@ -346,7 +373,7 @@ public class CheckInForm extends javax.swing.JFrame {
         });
 
         purposeOfVisitTextArea.setColumns(20);
-        purposeOfVisitTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        purposeOfVisitTextArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         purposeOfVisitTextArea.setLineWrap(true);
         purposeOfVisitTextArea.setRows(5);
         purposeOfVisitTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -356,39 +383,41 @@ public class CheckInForm extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(purposeOfVisitTextArea);
 
-        noOfPeopleLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        noOfPeopleCountLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        noOfPeopleCountLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        noOfPeopleCountLabel.setText("0");
+
+        nameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        nameLabel.setText("Name");
+
+        addressLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addressLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addressLabel.setText("Address");
+
+        telLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        telLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        telLabel.setText("Telephone No.");
+
+        roomTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        roomTypeLabel.setText("Room Type");
+
+        roomNoLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomNoLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        roomNoLabel.setText("Room No");
+
+        noOfPeopleLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         noOfPeopleLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        noOfPeopleLabel.setText("0");
+        noOfPeopleLabel.setText("No of People");
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Name");
+        purposeOfVisitLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        purposeOfVisitLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        purposeOfVisitLabel.setText("Purpose of Visit");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Address");
-
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Telephone No.");
-
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText("Room Type");
-
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel6.setText("Room No");
-
-        jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel7.setText("No of People");
-
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel8.setText("Purpose of Visit");
-
-        checkInButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        checkInButton.setBackground(new java.awt.Color(108, 160, 209));
+        checkInButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        checkInButton.setForeground(new java.awt.Color(255, 255, 255));
         checkInButton.setText("CHECK IN");
         checkInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,6 +425,8 @@ public class CheckInForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,87 +434,110 @@ public class CheckInForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Check In");
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Hotel.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(498, 498, 498)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(58, 58, 58)
+                .addComponent(jLabel14)
+                .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(foreignerCheckBox)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addressLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nameLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(telLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(telTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(noOfPeopleSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(roomNoCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, 120, Short.MAX_VALUE)
-                            .addComponent(roomTypeCombo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(telTextField, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(noOfPeopleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(498, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(roomTypeLabel)
+                            .addComponent(roomNoLabel)
+                            .addComponent(noOfPeopleLabel)
+                            .addComponent(purposeOfVisitLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(roomTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(foreignerCheckBox)
+                            .addComponent(roomNoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(noOfPeopleSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(noOfPeopleCountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(0, 327, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(checkInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(536, 536, 536))
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(closeButton)
-                        .addContainerGap())))
+                        .addComponent(titleLabel)
+                        .addGap(641, 641, 641))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(checkInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(378, 378, 378))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(51, 51, 51)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(titleLabel)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addComponent(nameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(telTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addComponent(foreignerCheckBox)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel14)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addressLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(telTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(telLabel))
+                        .addGap(18, 18, 18)
+                        .addComponent(foreignerCheckBox)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(roomTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(roomTypeLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(roomNoCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                            .addComponent(roomNoLabel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(noOfPeopleSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(noOfPeopleLabel)))
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                            .addComponent(noOfPeopleLabel)
+                            .addComponent(noOfPeopleCountLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(purposeOfVisitLabel))))
                 .addGap(18, 18, 18)
                 .addComponent(checkInButton)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
@@ -491,6 +545,8 @@ public class CheckInForm extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
 
+        setTheme();
+        
         DefaultComboBoxModel roomTypeComboBoxModel = (DefaultComboBoxModel) roomTypeCombo.getModel();
         DefaultComboBoxModel roomNoComboBoxModel = (DefaultComboBoxModel) roomNoCombo.getModel();
 
@@ -528,7 +584,7 @@ public class CheckInForm extends javax.swing.JFrame {
     private void noOfPeopleSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_noOfPeopleSliderStateChanged
 
         int counter = noOfPeopleSlider.getValue();
-        noOfPeopleLabel.setText(String.valueOf(counter));
+        noOfPeopleCountLabel.setText(String.valueOf(counter));
 
     }//GEN-LAST:event_noOfPeopleSliderStateChanged
 
@@ -655,7 +711,7 @@ public class CheckInForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -670,7 +726,7 @@ public class CheckInForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(CheckInForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CheckInForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -682,6 +738,7 @@ public class CheckInForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addressLabel;
     private javax.swing.JTextArea addressTextArea;
     private javax.swing.JButton adhaarCompleteButton;
     private javax.swing.JDialog adhaarDialog;
@@ -693,28 +750,29 @@ public class CheckInForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JComboBox<String> nationalityComboBox;
+    private javax.swing.JLabel noOfPeopleCountLabel;
     private javax.swing.JLabel noOfPeopleLabel;
     private javax.swing.JSlider noOfPeopleSlider;
     private javax.swing.JButton passportCompleteButton;
     private javax.swing.JDialog passportDialog;
     private com.toedter.calendar.JDateChooser passportIssueDate;
     private javax.swing.JTextField passportTextField;
+    private javax.swing.JLabel purposeOfVisitLabel;
     private javax.swing.JTextArea purposeOfVisitTextArea;
     private javax.swing.JComboBox<String> roomNoCombo;
+    private javax.swing.JLabel roomNoLabel;
     private javax.swing.JComboBox<String> roomTypeCombo;
+    private javax.swing.JLabel roomTypeLabel;
+    private javax.swing.JLabel telLabel;
     private javax.swing.JTextField telTextField;
+    private javax.swing.JLabel titleLabel;
     private javax.swing.JComboBox<String> yearOfBirthCombo;
     // End of variables declaration//GEN-END:variables
 }

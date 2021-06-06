@@ -13,6 +13,7 @@ import DTO.RoomTypeData;
 import DTO.RoomsData;
 import Logic.Billing;
 import Logic.RoomBooking;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -34,6 +36,45 @@ public class BookingForm extends javax.swing.JFrame {
      */
     public BookingForm() {
         initComponents();
+    }
+
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+        nameLabel.setForeground(new Color(45, 58, 84));
+        contactLabel.setForeground(new Color(45, 58, 84));
+        roomTypeLabel.setForeground(new Color(45, 58, 84));
+        roomNoLabel.setForeground(new Color(45, 58, 84));
+        fromLabel.setForeground(new Color(45, 58, 84));
+        toLabel.setForeground(new Color(45, 58, 84));
+        paymentLabel.setForeground(new Color(45, 58, 84));
+        cancelNameLabel.setForeground(new Color(45, 58, 84));
+        cancelContactLabel.setForeground(new Color(45, 58, 84));
+
+        delBookingsTable.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+
+            @Override
+            public void setOpaque(boolean isOpaque) {
+                super.setOpaque(true); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setBackground(Color c) {
+                super.setBackground(new Color(45, 58, 84)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setForeground(Color c) {
+                super.setForeground(new Color(255, 255, 255)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+
     }
 
     /**
@@ -171,9 +212,9 @@ public class BookingForm extends javax.swing.JFrame {
     private void initComponents() {
 
         cancelBookingDialog = new javax.swing.JDialog();
-        jLabel9 = new javax.swing.JLabel();
+        cancelNameLabel = new javax.swing.JLabel();
         delNameTextField = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        cancelContactLabel = new javax.swing.JLabel();
         delContactTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         delBookingsTable = new javax.swing.JTable();
@@ -185,22 +226,23 @@ public class BookingForm extends javax.swing.JFrame {
         fromDateChooser = new com.toedter.calendar.JDateChooser();
         toDateChooser = new com.toedter.calendar.JDateChooser();
         paymentTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        contactLabel = new javax.swing.JLabel();
+        roomTypeLabel = new javax.swing.JLabel();
+        roomNoLabel = new javax.swing.JLabel();
+        fromLabel = new javax.swing.JLabel();
+        toLabel = new javax.swing.JLabel();
+        paymentLabel = new javax.swing.JLabel();
         closeButton = new javax.swing.JButton();
         bookRoomButton = new javax.swing.JButton();
         checkAvailabilityButton = new javax.swing.JButton();
         cancelBookingButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel9.setText("Name");
+        cancelNameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        cancelNameLabel.setText("Name");
 
-        delNameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        delNameTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         delNameTextField.setText("jTextField2");
         delNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -208,10 +250,10 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel10.setText("Contact");
+        cancelContactLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        cancelContactLabel.setText("Contact");
 
-        delContactTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        delContactTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         delContactTextField.setText("jTextField3");
         delContactTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -219,6 +261,7 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
+        delBookingsTable.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         delBookingsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -232,7 +275,9 @@ public class BookingForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(delBookingsTable);
 
-        delDeleteButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        delDeleteButton.setBackground(new java.awt.Color(108, 160, 209));
+        delDeleteButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        delDeleteButton.setForeground(new java.awt.Color(255, 255, 255));
         delDeleteButton.setText("DELETE BOOKING");
         delDeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,11 +297,11 @@ public class BookingForm extends javax.swing.JFrame {
                 .addGap(71, 71, 71)
                 .addGroup(cancelBookingDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cancelBookingDialogLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(cancelNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(delNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10)
+                        .addComponent(cancelContactLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(delContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -267,15 +312,15 @@ public class BookingForm extends javax.swing.JFrame {
             .addGroup(cancelBookingDialogLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(cancelBookingDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                    .addComponent(cancelNameLabel)
                     .addComponent(delNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
+                    .addComponent(cancelContactLabel)
                     .addComponent(delContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(delDeleteButton)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -287,16 +332,20 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
-        nameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        nameTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         nameTextField.setText("jTextField1");
 
-        contactTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        contactTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         contactTextField.setText("jTextField2");
 
-        roomTypeComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomTypeComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        roomTypeComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomTypeComboBox.setForeground(new java.awt.Color(45, 58, 84));
         roomTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        roomNoComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        roomNoComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        roomNoComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomNoComboBox.setForeground(new java.awt.Color(45, 58, 84));
         roomNoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         roomNoComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -304,11 +353,15 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
-        fromDateChooser.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        fromDateChooser.setBackground(new java.awt.Color(246, 252, 252));
+        fromDateChooser.setForeground(new java.awt.Color(45, 58, 84));
+        fromDateChooser.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
 
-        toDateChooser.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        toDateChooser.setBackground(new java.awt.Color(246, 252, 252));
+        toDateChooser.setForeground(new java.awt.Color(45, 58, 84));
+        toDateChooser.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
 
-        paymentTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        paymentTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         paymentTextField.setText("jTextField3");
         paymentTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -316,34 +369,36 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Name");
+        nameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        nameLabel.setText("Name");
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Contact No.");
+        contactLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        contactLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        contactLabel.setText("Contact No.");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Room Type");
+        roomTypeLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        roomTypeLabel.setText("Room Type");
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Room No");
+        roomNoLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        roomNoLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        roomNoLabel.setText("Room No");
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText("From Date");
+        fromLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        fromLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        fromLabel.setText("From Date");
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel6.setText("To Date");
+        toLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        toLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        toLabel.setText("To Date");
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel7.setText("Payment");
+        paymentLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        paymentLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        paymentLabel.setText("Payment");
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,7 +406,9 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
-        bookRoomButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        bookRoomButton.setBackground(new java.awt.Color(108, 160, 209));
+        bookRoomButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        bookRoomButton.setForeground(new java.awt.Color(255, 255, 255));
         bookRoomButton.setText("BOOK ROOM");
         bookRoomButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,7 +416,9 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
-        checkAvailabilityButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        checkAvailabilityButton.setBackground(new java.awt.Color(108, 160, 209));
+        checkAvailabilityButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        checkAvailabilityButton.setForeground(new java.awt.Color(255, 255, 255));
         checkAvailabilityButton.setText("CHECK AVAILABILITY");
         checkAvailabilityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,7 +426,9 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
-        cancelBookingButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        cancelBookingButton.setBackground(new java.awt.Color(108, 160, 209));
+        cancelBookingButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        cancelBookingButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelBookingButton.setText("CANCEL BOOKING");
         cancelBookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,95 +436,103 @@ public class BookingForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Booking");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(565, 565, 565)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nameLabel)
+                    .addComponent(contactLabel)
+                    .addComponent(roomTypeLabel)
+                    .addComponent(roomNoLabel)
+                    .addComponent(fromLabel)
+                    .addComponent(toLabel)
+                    .addComponent(paymentLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameTextField)
+                    .addComponent(contactTextField)
+                    .addComponent(roomTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roomNoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fromDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(paymentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(557, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(500, 500, 500)
+                .addComponent(bookRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelBookingButton)
+                .addGap(500, 500, 500))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addGap(643, 643, 643))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(568, 568, 568)
-                                .addComponent(checkAvailabilityButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(504, 504, 504)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(nameTextField)
-                                            .addComponent(contactTextField)
-                                            .addComponent(roomTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(roomNoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(fromDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(toDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(paymentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(7, 7, 7)
-                                        .addComponent(bookRoomButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cancelBookingButton)))))
-                        .addGap(0, 449, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(checkAvailabilityButton)
+                        .addGap(597, 597, 597))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
+                .addGap(60, 60, 60)
+                .addComponent(titleLabel)
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(nameLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(contactLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(roomTypeLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(roomNoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(roomNoLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fromDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(fromLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(toDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                    .addComponent(toLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(checkAvailabilityButton)
-                .addGap(28, 28, 28)
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(paymentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(44, 44, 44)
+                    .addComponent(paymentLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bookRoomButton)
                     .addComponent(cancelBookingButton))
-                .addGap(114, 114, 114))
+                .addGap(100, 100, 100))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+        setTheme();
 
         DefaultComboBoxModel roomTypeComboBoxModel = (DefaultComboBoxModel) roomTypeComboBox.getModel();
 
@@ -634,10 +703,10 @@ public class BookingForm extends javax.swing.JFrame {
     }//GEN-LAST:event_delDeleteButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        
+
         this.setVisible(false);
         new FrontOfficeMenu().show();
-        
+
     }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
@@ -649,7 +718,7 @@ public class BookingForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -664,7 +733,7 @@ public class BookingForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(BookingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(BookingForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -679,28 +748,29 @@ public class BookingForm extends javax.swing.JFrame {
     private javax.swing.JButton bookRoomButton;
     private javax.swing.JButton cancelBookingButton;
     private javax.swing.JDialog cancelBookingDialog;
+    private javax.swing.JLabel cancelContactLabel;
+    private javax.swing.JLabel cancelNameLabel;
     private javax.swing.JButton checkAvailabilityButton;
     private javax.swing.JButton closeButton;
+    private javax.swing.JLabel contactLabel;
     private javax.swing.JTextField contactTextField;
     private javax.swing.JTable delBookingsTable;
     private javax.swing.JTextField delContactTextField;
     private javax.swing.JButton delDeleteButton;
     private javax.swing.JTextField delNameTextField;
     private com.toedter.calendar.JDateChooser fromDateChooser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel fromLabel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel paymentLabel;
     private javax.swing.JTextField paymentTextField;
     private javax.swing.JComboBox<String> roomNoComboBox;
+    private javax.swing.JLabel roomNoLabel;
     private javax.swing.JComboBox<String> roomTypeComboBox;
+    private javax.swing.JLabel roomTypeLabel;
+    private javax.swing.JLabel titleLabel;
     private com.toedter.calendar.JDateChooser toDateChooser;
+    private javax.swing.JLabel toLabel;
     // End of variables declaration//GEN-END:variables
 }

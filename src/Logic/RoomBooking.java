@@ -36,8 +36,6 @@ public class RoomBooking {
 
             Booking booking = bookingListIterator.next();
 
-            System.out.println(booking.getFromDate() + " : " + booking.getToDate());
-
             if (!(fromDate.isBefore(booking.getFromDate()) && toDate.isBefore(booking.getToDate())) || (fromDate.isAfter(booking.getFromDate()) && toDate.isAfter(booking.getToDate()))) {
                 return false;
             }

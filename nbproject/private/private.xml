@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/MaintenanceMenu.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/ReportsMenu.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/FrontOfficeMenu.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/MainMenu.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/FoodnBeverageMenu.java</file>
-            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/LoginForm.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/MaintenanceForm.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/GuestReport.java</file>
+            <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/UI/CheckInForm.java</file>
             <file>file:/C:/Users/ASUS/Documents/NetBeansProjects/HMS/src/hms/HMS.java</file>
         </group>
     </open-files>

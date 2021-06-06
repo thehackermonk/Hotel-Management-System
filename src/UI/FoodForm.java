@@ -8,11 +8,13 @@ package UI;
 import Bean.Food;
 import DTO.FoodData;
 import Logic.Sort;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -25,6 +27,48 @@ public class FoodForm extends javax.swing.JFrame {
      */
     public FoodForm() {
         initComponents();
+    }
+
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+        addFoodDialog.getContentPane().setBackground(new Color(246, 252, 252));
+        modifyFoodDialog.getContentPane().setBackground(new Color(246, 252, 252));
+        removeFoodDialog.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+        addNDBLabel.setForeground(new Color(45, 58, 84));
+        addNameLabel.setForeground(new Color(45, 58, 84));
+        addDescriptionLabel.setForeground(new Color(45, 58, 84));
+        addPriceLabel.setForeground(new Color(45, 58, 84));
+        modifyFoodLabel.setForeground(new Color(45, 58, 84));
+        modifyDescriptionLabel.setForeground(new Color(45, 58, 84));
+        modifyPriceLabel.setForeground(new Color(45, 58, 84));
+        removeNameLabel.setForeground(new Color(45, 58, 84));
+        removeDecriptionLabel.setForeground(new Color(45, 58, 84));
+
+        foodTable.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+
+            @Override
+            public void setOpaque(boolean isOpaque) {
+                super.setOpaque(true); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setBackground(Color c) {
+                super.setBackground(new Color(45, 58, 84)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setForeground(Color c) {
+                super.setForeground(new Color(255, 255, 255)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+
     }
 
     /**
@@ -108,33 +152,33 @@ public class FoodForm extends javax.swing.JFrame {
     private void initComponents() {
 
         addFoodDialog = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
+        addNDBLabel = new javax.swing.JLabel();
         addNDBNoTextField = new javax.swing.JTextField();
         addNameTextField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         addDescriptionTextArea = new javax.swing.JTextArea();
         addPriceTextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        addNameLabel = new javax.swing.JLabel();
+        addDescriptionLabel = new javax.swing.JLabel();
+        addPriceLabel = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         modifyFoodDialog = new javax.swing.JDialog();
         modifyFoodNameCombo = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         modifyFoodDescriptionTextArea = new javax.swing.JTextArea();
         modifyFoodNameTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        modifyFoodLabel = new javax.swing.JLabel();
+        modifyDescriptionLabel = new javax.swing.JLabel();
         modifyFoodPriceTextField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        modifyPriceLabel = new javax.swing.JLabel();
         modifyButton = new javax.swing.JButton();
         modifyResetButton = new javax.swing.JButton();
         removeFoodDialog = new javax.swing.JDialog();
-        jLabel5 = new javax.swing.JLabel();
+        removeNameLabel = new javax.swing.JLabel();
         removeFoodNameComboBox = new javax.swing.JComboBox<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         removeFoodDescriptionTextArea = new javax.swing.JTextArea();
-        jLabel9 = new javax.swing.JLabel();
+        removeDecriptionLabel = new javax.swing.JLabel();
         removeButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         foodTable = new javax.swing.JTable();
@@ -142,15 +186,17 @@ public class FoodForm extends javax.swing.JFrame {
         editFoodButton = new javax.swing.JButton();
         removeFoodButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("NDB No.");
+        addNDBLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addNDBLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addNDBLabel.setText("NDB No.");
 
-        addNDBNoTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addNDBNoTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addNDBNoTextField.setText("jTextField1");
+        addNDBNoTextField.setDisabledTextColor(new java.awt.Color(108, 160, 209));
 
-        addNameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addNameTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addNameTextField.setText("jTextField2");
         addNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -159,7 +205,7 @@ public class FoodForm extends javax.swing.JFrame {
         });
 
         addDescriptionTextArea.setColumns(20);
-        addDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addDescriptionTextArea.setLineWrap(true);
         addDescriptionTextArea.setRows(5);
         addDescriptionTextArea.setWrapStyleWord(true);
@@ -170,22 +216,24 @@ public class FoodForm extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(addDescriptionTextArea);
 
-        addPriceTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addPriceTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         addPriceTextField.setText("jTextField3");
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("Name");
+        addNameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addNameLabel.setText("Name");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Description");
+        addDescriptionLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addDescriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addDescriptionLabel.setText("Description");
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Price");
+        addPriceLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        addPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addPriceLabel.setText("Price");
 
-        addButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addButton.setBackground(new java.awt.Color(108, 160, 209));
+        addButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
         addButton.setText("ADD FOOD");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,18 +246,18 @@ public class FoodForm extends javax.swing.JFrame {
         addFoodDialogLayout.setHorizontalGroup(
             addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addFoodDialogLayout.createSequentialGroup()
-                .addContainerGap(302, Short.MAX_VALUE)
+                .addContainerGap(290, Short.MAX_VALUE)
                 .addGroup(addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(addFoodDialogLayout.createSequentialGroup()
-                            .addComponent(jLabel4)
+                            .addComponent(addPriceLabel)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(addPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(addFoodDialogLayout.createSequentialGroup()
                             .addGroup(addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3))
+                                .addComponent(addNDBLabel)
+                                .addComponent(addNameLabel)
+                                .addComponent(addDescriptionLabel))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -219,33 +267,35 @@ public class FoodForm extends javax.swing.JFrame {
                         .addGap(63, 63, 63)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)))
-                .addGap(286, 286, 286))
+                .addGap(288, 288, 288))
         );
         addFoodDialogLayout.setVerticalGroup(
             addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addFoodDialogLayout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
+                .addContainerGap(150, Short.MAX_VALUE)
                 .addGroup(addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(addNDBLabel)
                     .addComponent(addNDBNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(addNameLabel))
                 .addGap(18, 18, 18)
                 .addGroup(addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(addDescriptionLabel)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(addFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(addPriceLabel))
                 .addGap(29, 29, 29)
                 .addComponent(addButton)
                 .addGap(100, 100, 100))
         );
 
-        modifyFoodNameCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyFoodNameCombo.setBackground(new java.awt.Color(246, 252, 252));
+        modifyFoodNameCombo.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyFoodNameCombo.setForeground(new java.awt.Color(45, 58, 84));
         modifyFoodNameCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         modifyFoodNameCombo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -254,7 +304,7 @@ public class FoodForm extends javax.swing.JFrame {
         });
 
         modifyFoodDescriptionTextArea.setColumns(20);
-        modifyFoodDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyFoodDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         modifyFoodDescriptionTextArea.setLineWrap(true);
         modifyFoodDescriptionTextArea.setRows(5);
         modifyFoodDescriptionTextArea.setWrapStyleWord(true);
@@ -265,7 +315,7 @@ public class FoodForm extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(modifyFoodDescriptionTextArea);
 
-        modifyFoodNameTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyFoodNameTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         modifyFoodNameTextField.setText("jTextField1");
         modifyFoodNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -273,22 +323,24 @@ public class FoodForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel6.setText("Food");
+        modifyFoodLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyFoodLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        modifyFoodLabel.setText("Food");
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel7.setText("Description");
+        modifyDescriptionLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyDescriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        modifyDescriptionLabel.setText("Description");
 
-        modifyFoodPriceTextField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyFoodPriceTextField.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         modifyFoodPriceTextField.setText("jTextField2");
 
-        jLabel8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel8.setText("Price");
+        modifyPriceLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        modifyPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        modifyPriceLabel.setText("Price");
 
-        modifyButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyButton.setBackground(new java.awt.Color(108, 160, 209));
+        modifyButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        modifyButton.setForeground(new java.awt.Color(255, 255, 255));
         modifyButton.setText("MODIFY");
         modifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,7 +348,9 @@ public class FoodForm extends javax.swing.JFrame {
             }
         });
 
-        modifyResetButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        modifyResetButton.setBackground(new java.awt.Color(108, 160, 209));
+        modifyResetButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        modifyResetButton.setForeground(new java.awt.Color(255, 255, 255));
         modifyResetButton.setText("RESET");
         modifyResetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,23 +369,22 @@ public class FoodForm extends javax.swing.JFrame {
                         .addComponent(modifyFoodNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(modifyFoodDialogLayout.createSequentialGroup()
                         .addGap(266, 266, 266)
+                        .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(modifyFoodLabel)
+                            .addComponent(modifyDescriptionLabel)
+                            .addComponent(modifyPriceLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(modifyFoodDialogLayout.createSequentialGroup()
-                                .addComponent(modifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(modifyResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(modifyFoodDialogLayout.createSequentialGroup()
-                                .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                        .addComponent(modifyFoodPriceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
-                                    .addComponent(modifyFoodNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(264, Short.MAX_VALUE))
+                            .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(modifyFoodPriceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                            .addComponent(modifyFoodNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(modifyFoodDialogLayout.createSequentialGroup()
+                        .addGap(253, 253, 253)
+                        .addComponent(modifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(modifyResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         modifyFoodDialogLayout.setVerticalGroup(
             modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,28 +393,30 @@ public class FoodForm extends javax.swing.JFrame {
                 .addComponent(modifyFoodNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(modifyFoodLabel)
                     .addComponent(modifyFoodNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(modifyDescriptionLabel))
                 .addGap(18, 18, 18)
                 .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modifyFoodPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(modifyPriceLabel))
                 .addGap(18, 18, 18)
                 .addGroup(modifyFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(modifyButton)
                     .addComponent(modifyResetButton))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel5.setText("Name");
+        removeNameLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeNameLabel.setText("Name");
 
-        removeFoodNameComboBox.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeFoodNameComboBox.setBackground(new java.awt.Color(246, 252, 252));
+        removeFoodNameComboBox.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeFoodNameComboBox.setForeground(new java.awt.Color(45, 58, 84));
         removeFoodNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         removeFoodNameComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -370,17 +425,19 @@ public class FoodForm extends javax.swing.JFrame {
         });
 
         removeFoodDescriptionTextArea.setColumns(20);
-        removeFoodDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeFoodDescriptionTextArea.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         removeFoodDescriptionTextArea.setLineWrap(true);
         removeFoodDescriptionTextArea.setRows(5);
         removeFoodDescriptionTextArea.setWrapStyleWord(true);
         jScrollPane4.setViewportView(removeFoodDescriptionTextArea);
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel9.setText("Description");
+        removeDecriptionLabel.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        removeDecriptionLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        removeDecriptionLabel.setText("Description");
 
-        removeButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeButton.setBackground(new java.awt.Color(108, 160, 209));
+        removeButton.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        removeButton.setForeground(new java.awt.Color(255, 255, 255));
         removeButton.setText("REMOVE");
         removeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -397,8 +454,8 @@ public class FoodForm extends javax.swing.JFrame {
                     .addGroup(removeFoodDialogLayout.createSequentialGroup()
                         .addGap(260, 260, 260)
                         .addGroup(removeFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel9))
+                            .addComponent(removeNameLabel)
+                            .addComponent(removeDecriptionLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(removeFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -406,22 +463,22 @@ public class FoodForm extends javax.swing.JFrame {
                     .addGroup(removeFoodDialogLayout.createSequentialGroup()
                         .addGap(314, 314, 314)
                         .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         removeFoodDialogLayout.setVerticalGroup(
             removeFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(removeFoodDialogLayout.createSequentialGroup()
                 .addGap(176, 176, 176)
                 .addGroup(removeFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(removeNameLabel)
                     .addComponent(removeFoodNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(removeFoodDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(removeDecriptionLabel))
                 .addGap(30, 30, 30)
                 .addComponent(removeButton)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -433,7 +490,7 @@ public class FoodForm extends javax.swing.JFrame {
             }
         });
 
-        foodTable.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        foodTable.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         foodTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -447,7 +504,9 @@ public class FoodForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(foodTable);
 
-        addFoodButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        addFoodButton.setBackground(new java.awt.Color(108, 160, 209));
+        addFoodButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        addFoodButton.setForeground(new java.awt.Color(255, 255, 255));
         addFoodButton.setText("ADD");
         addFoodButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -455,7 +514,9 @@ public class FoodForm extends javax.swing.JFrame {
             }
         });
 
-        editFoodButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        editFoodButton.setBackground(new java.awt.Color(108, 160, 209));
+        editFoodButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        editFoodButton.setForeground(new java.awt.Color(255, 255, 255));
         editFoodButton.setText("EDIT");
         editFoodButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -463,7 +524,9 @@ public class FoodForm extends javax.swing.JFrame {
             }
         });
 
-        removeFoodButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        removeFoodButton.setBackground(new java.awt.Color(108, 160, 209));
+        removeFoodButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        removeFoodButton.setForeground(new java.awt.Color(255, 255, 255));
         removeFoodButton.setText("REMOVE");
         removeFoodButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -471,6 +534,8 @@ public class FoodForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -478,45 +543,60 @@ public class FoodForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Food");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(addFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(237, 237, 237)
-                        .addComponent(editFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(removeFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(200, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(closeButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1066, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(96, 96, 96)
+                                        .addComponent(addFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(237, 237, 237)
+                                        .addComponent(editFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(238, 238, 238)
+                                        .addComponent(removeFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(658, 658, 658)
+                                .addComponent(titleLabel)))
+                        .addGap(0, 139, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(titleLabel)
+                .addGap(50, 50, 50)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+
+        setTheme();
 
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
         refreshFoodTable(foodTableModel);
@@ -766,7 +846,7 @@ public class FoodForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -781,7 +861,7 @@ public class FoodForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FoodForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FoodForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -794,39 +874,40 @@ public class FoodForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JLabel addDescriptionLabel;
     private javax.swing.JTextArea addDescriptionTextArea;
     private javax.swing.JButton addFoodButton;
     private javax.swing.JDialog addFoodDialog;
+    private javax.swing.JLabel addNDBLabel;
     private javax.swing.JTextField addNDBNoTextField;
+    private javax.swing.JLabel addNameLabel;
     private javax.swing.JTextField addNameTextField;
+    private javax.swing.JLabel addPriceLabel;
     private javax.swing.JTextField addPriceTextField;
     private javax.swing.JButton closeButton;
     private javax.swing.JButton editFoodButton;
     private javax.swing.JTable foodTable;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton modifyButton;
+    private javax.swing.JLabel modifyDescriptionLabel;
     private javax.swing.JTextArea modifyFoodDescriptionTextArea;
     private javax.swing.JDialog modifyFoodDialog;
+    private javax.swing.JLabel modifyFoodLabel;
     private javax.swing.JComboBox<String> modifyFoodNameCombo;
     private javax.swing.JTextField modifyFoodNameTextField;
     private javax.swing.JTextField modifyFoodPriceTextField;
+    private javax.swing.JLabel modifyPriceLabel;
     private javax.swing.JButton modifyResetButton;
     private javax.swing.JButton removeButton;
+    private javax.swing.JLabel removeDecriptionLabel;
     private javax.swing.JButton removeFoodButton;
     private javax.swing.JTextArea removeFoodDescriptionTextArea;
     private javax.swing.JDialog removeFoodDialog;
     private javax.swing.JComboBox<String> removeFoodNameComboBox;
+    private javax.swing.JLabel removeNameLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

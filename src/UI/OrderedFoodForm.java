@@ -12,10 +12,12 @@ import DTO.FoodData;
 import DTO.OrderFoodData;
 import DTO.RestaurantData;
 import Logic.OrderedFoodLogic;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
@@ -30,6 +32,60 @@ public class OrderedFoodForm extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     * Set theme of the form
+     */
+    public void setTheme() {
+
+        this.getContentPane().setBackground(new Color(246, 252, 252));
+
+        titleLabel.setForeground(new Color(45, 58, 84));
+
+        orderTable.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+
+            @Override
+            public void setOpaque(boolean isOpaque) {
+                super.setOpaque(true); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setBackground(Color c) {
+                super.setBackground(new Color(45, 58, 84)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setForeground(Color c) {
+                super.setForeground(new Color(255, 255, 255)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+
+        foodTable.getTableHeader().setDefaultRenderer(new DefaultTableCellHeaderRenderer() {
+
+            @Override
+            public void setOpaque(boolean isOpaque) {
+                super.setOpaque(true); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setBackground(Color c) {
+                super.setBackground(new Color(45, 58, 84)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void setForeground(Color c) {
+                super.setForeground(new Color(255, 255, 255)); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+
+    }
+
+    /**
+     * To clear the table
+     *
+     * @param tableModel : table to be cleared
+     */
     public void clearTable(DefaultTableModel tableModel) {
 
         while (tableModel.getRowCount() > 0) {
@@ -38,6 +94,9 @@ public class OrderedFoodForm extends javax.swing.JFrame {
 
     }
 
+    /**
+     * To get all the orders to the table
+     */
     public void refreshOrderTable() {
 
         DefaultTableModel orderTableModel = (DefaultTableModel) orderTable.getModel();
@@ -65,10 +124,6 @@ public class OrderedFoodForm extends javax.swing.JFrame {
 
     }
 
-    public void refreshFoodTable() {
-
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,6 +140,7 @@ public class OrderedFoodForm extends javax.swing.JFrame {
         viewOrderButton = new javax.swing.JButton();
         completeOrderButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -97,6 +153,7 @@ public class OrderedFoodForm extends javax.swing.JFrame {
 
         jScrollPane1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        orderTable.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         orderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -112,6 +169,7 @@ public class OrderedFoodForm extends javax.swing.JFrame {
 
         jScrollPane2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
 
+        foodTable.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         foodTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -125,7 +183,9 @@ public class OrderedFoodForm extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(foodTable);
 
-        viewOrderButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        viewOrderButton.setBackground(new java.awt.Color(108, 160, 209));
+        viewOrderButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        viewOrderButton.setForeground(new java.awt.Color(255, 255, 255));
         viewOrderButton.setText("VIEW ORDER");
         viewOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +193,9 @@ public class OrderedFoodForm extends javax.swing.JFrame {
             }
         });
 
-        completeOrderButton.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        completeOrderButton.setBackground(new java.awt.Color(108, 160, 209));
+        completeOrderButton.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
+        completeOrderButton.setForeground(new java.awt.Color(255, 255, 255));
         completeOrderButton.setText("COMPLETE ORDER");
         completeOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +203,8 @@ public class OrderedFoodForm extends javax.swing.JFrame {
             }
         });
 
+        closeButton.setBackground(new java.awt.Color(255, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 255, 255));
         closeButton.setText("X");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,33 +212,42 @@ public class OrderedFoodForm extends javax.swing.JFrame {
             }
         });
 
+        titleLabel.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
+        titleLabel.setText("Food Order");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(viewOrderButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(completeOrderButton)
-                .addGap(239, 239, 239))
+                .addGap(75, 75, 75)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(closeButton)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(233, 233, 233)
+                .addComponent(viewOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(completeOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(228, 228, 228))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(627, 627, 627)
+                .addComponent(titleLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(closeButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(titleLabel)
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,7 +255,7 @@ public class OrderedFoodForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewOrderButton)
                     .addComponent(completeOrderButton))
-                .addGap(46, 46, 46))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,10 +263,13 @@ public class OrderedFoodForm extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
 
+        setTheme();
+
         DefaultTableModel foodTableModel = (DefaultTableModel) foodTable.getModel();
 
         refreshOrderTable();
         clearTable(foodTableModel);
+        orderTable.requestFocus();
 
     }//GEN-LAST:event_formWindowGainedFocus
 
@@ -274,10 +350,10 @@ public class OrderedFoodForm extends javax.swing.JFrame {
     }//GEN-LAST:event_completeOrderButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
-        
+
         this.setVisible(false);
         new FoodnBeverageMenu().show();
-        
+
     }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
@@ -289,7 +365,7 @@ public class OrderedFoodForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+ /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -304,7 +380,7 @@ public class OrderedFoodForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(OrderedFoodForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(OrderedFoodForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
@@ -322,6 +398,7 @@ public class OrderedFoodForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable orderTable;
+    private javax.swing.JLabel titleLabel;
     private javax.swing.JButton viewOrderButton;
     // End of variables declaration//GEN-END:variables
 }
